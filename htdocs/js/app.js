@@ -25,7 +25,6 @@ $.jsonRPC.withOptions({
 
 var luci = angular.module("luci", [
     "luci.controllers", 
-    "luci.login", 
     "ui.bootstrap"
 ]);
 
@@ -59,7 +58,7 @@ var luci = angular.module("luci", [
 }());
 
 luci.config(function ($routeProvider, $locationProvider) {
-    $locationProvider.hashPrefix('!');
+    //$locationProvider.hashPrefix('!');
     $routeProvider
         .when("/",
         {
@@ -75,5 +74,5 @@ luci.config(function ($routeProvider, $locationProvider) {
 });
 
 $(document).ready(function(){
-	//$("#loading-indicator").hide(); 
+	$("#loading-indicator").hide(); 
 }); 
