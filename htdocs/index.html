@@ -2,38 +2,68 @@
 <html lang="en" ng-app="luci">
 <head>
   <meta charset="utf-8">
-  <title>LookAround - Angular JS Learning Example App</title>
-  <!-- need to change these to local -->
-  <link href="////cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" rel="stylesheet" type="text/css" />
-  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+  <title>LuCi Express</title>
+  
+  <link href="/css/normalize.css" rel="stylesheet" type="text/css" />
+  <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+  
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body ng-controller="MainCtrl" class="zipcode-{{applied()}}">
-  <!-- View placeholder -->
-  <div ng-view></div>
-  <div class="loading-indicator">
-    <div class='text'> Loading ... </div>
+<body ng-controller="BodyCtrl" role="document">
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse" ng-controller="HeaderController">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Bootstrap theme</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav" auto-active>
+					<li ng-class="menuClass('home')"><a href="#!home">Home</a></li>
+					<li ng-class="menuClass('about')"><a href="#!about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Nav header</li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+	
+	<div class="container theme-showcase" role="main">
+		<!-- View placeholder -->
+		<div ng-view></div>
+		<div class="loading-indicator">
+			<div class='text'> Loading ... </div>
+		</div>
   </div>
-  <a href="https://github.com/shidhincr/lookaround"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  -->
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/jquery-1.9.1.js"></script>
-  <script src="lib/jquery-jsonrpc.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.4.0/ui-bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.4.0/ui-bootstrap-tpls.min.js"></script>
-  <script src="js/app.js"></script>
-	<script src="js/controllers.js"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  <script src="/lib/angular/angular.js"></script>
+  <script src="/lib/jquery-1.9.1.js"></script>
+  <script src="/lib/jquery-jsonrpc.js"></script>
+  <script src="/lib/bootstrap.min.js"></script>
+  <script src="/lib/ui-bootstrap.min.js"></script>
+  <script src="/lib/ui-bootstrap-tpls.min.js"></script>
+  <script src="/lib/ui-bootstrap-angular.js"></script>
+  
+  <script src="/js/app.js"></script>
+	<script src="/js/controllers.js"></script>
+	<script src="/js/login.js"></script>
 
-    ga('create', 'UA-10379928-16', 'lookaround.herokuapp.com');
-    ga('send', 'pageview');
-  </script>
 </body>
 </html>

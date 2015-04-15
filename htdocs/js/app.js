@@ -11,8 +11,8 @@ $.jsonRPC.withOptions({
 		namespace: "router", 
 		endPoint: "/ubus"
 	}, function(){
-		this.request('method.name', {
-			params: {"test": "test"},
+		this.request('call', {
+			params: [ "00000000000000000000000000000000", "session", "login", { "username": "root", "password": "secret"  } ],
 			success: function(result) {
 				// Do something with the result here
 				// It comes back as an RPC 2.0 compatible response object
@@ -24,20 +24,56 @@ $.jsonRPC.withOptions({
 	}); 
 
 var luci = angular.module("luci", [
-    "luci.controllers"
+    "luci.controllers", 
+    "luci.login", 
+    "ui.bootstrap"
 ]);
 
-luci.config(function ($routeProvider) {
+(function () {
+    angular.module('autoActive', [])
+        .directive('autoActive', ['$location', function ($location) {
+        return {
+            restrict: 'A',
+            scope: false,
+            link: function (scope, element) {
+                function setActive() {
+                    var path = $location.path();
+                    if (path) {
+                        angular.forEach(element.find('li'), function (li) {
+                            var anchor = li.querySelector('a');
+                            if (anchor.href.match('#' + path + '(?=\\?|$)')) {
+                                angular.element(li).addClass('active');
+                            } else {
+                                angular.element(li).removeClass('active');
+                            }
+                        });
+                    }
+                }
+
+                setActive();
+
+                scope.$on('$locationChangeSuccess', setActive);
+            }
+        }
+    }]);
+}());
+
+luci.config(function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix('!');
     $routeProvider
         .when("/",
         {
             controller: "HomePage",
             templateUrl: "views/main.html"
         })
-        .when("/search/:zipcode/:place",
+        .when("/about",
         {
-            controller: "SearchCtrl",
-            templateUrl: "partials/search.html"
+            controller: "HomePage",
+            templateUrl: "views/about.html"
         })
         .otherwise({ redirectTo: "/" });
 });
+
+$(document).ready(function(){
+	//$("#loading-indicator").hide(); 
+}); 
