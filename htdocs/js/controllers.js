@@ -1,12 +1,6 @@
 /*globals angular*/
 "use strict";
 
-function HeaderController($scope, $location) 
-{ 
-    $scope.isActive = function (viewLocation) { 
-        return viewLocation === $location.path();
-    };
-}
 
 /*
 angular.module('luci.login').controller('LoginModalCtrl', function ($scope, $modal, $log) {
@@ -51,10 +45,10 @@ angular.module('luci.login').controller('ModalInstanceCtrl', function ($scope, $
 });
 */
 angular.module("luci.controllers", [])
-	.controller("HomePage", function ($scope, $location, $routeParams) {
+	.controller("HomePage", function ($scope, $location) {
 		
 	})
-	.controller("BodyCtrl", function ($scope, $routeParams, $location, $window) {
+	.controller("BodyCtrl", function ($scope, $location, $window) {
 		$scope.menuClass = function(page) {
 			var current = $location.path().substring(1);
 			return page === current ? "active" : "";
@@ -97,6 +91,11 @@ angular.module("luci.controllers", [])
 			}, function () {
 				$log.info('Modal dismissed at: ' + new Date());
 			});
+		};
+	})
+	.controller("HeaderController", function($scope, $location) { 
+		$scope.isActive = function (viewLocation) { 
+			return viewLocation === $location.path();
 		};
 	}); 
 

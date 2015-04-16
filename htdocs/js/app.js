@@ -23,12 +23,9 @@ $.jsonRPC.withOptions({
 		})
 	}); 
 
-var luci = angular.module("luci", [
-    "luci.controllers", 
-    "ui.bootstrap"
-]);
 
 (function () {
+		
     angular.module('autoActive', [])
         .directive('autoActive', ['$location', function ($location) {
         return {
@@ -55,24 +52,42 @@ var luci = angular.module("luci", [
             }
         }
     }]);
+	
+	angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
+	/* jshint -W100 */
+		gettextCatalog.setStrings('sv-SE', {"About":"Om","Test":"Jag testar"});
+	/* jshint +W100 */
+	}]);
+	var luci = angular.module("luci", [
+		"luci.controllers", 
+		"ui.bootstrap",
+		"ui.router", 
+		"gettext"
+		])
+		.config(function ($stateProvider, $locationProvider) {
+			//$locationProvider.otherwise({ redirectTo: "/" });
+			$locationProvider.hashPrefix('!');
+			$stateProvider
+				.state("home",
+				{
+					url: "/home", 
+					controller: "HomePage",
+					templateUrl: "/views/main.html"
+				})
+				.state("about",
+				{
+					url: "/about", 
+					templateUrl: "/views/about.html"
+				}); 
+				
+		})
+		.run(function(gettextCatalog){
+			gettextCatalog.currentLanguage = "sv-SE"; 
+			gettextCatalog.debug = true; 
+		}); 
+
+	$(document).ready(function(){
+		$("#loading-indicator").hide(); 
+	}); 
+
 }());
-
-luci.config(function ($routeProvider, $locationProvider) {
-    //$locationProvider.hashPrefix('!');
-    $routeProvider
-        .when("/",
-        {
-            controller: "HomePage",
-            templateUrl: "views/main.html"
-        })
-        .when("/about",
-        {
-            controller: "HomePage",
-            templateUrl: "views/about.html"
-        })
-        .otherwise({ redirectTo: "/" });
-});
-
-$(document).ready(function(){
-	$("#loading-indicator").hide(); 
-}); 
