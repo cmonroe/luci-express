@@ -3,12 +3,14 @@ var app = express();
 var JSON = require("JSON"); 
 
 var bodyParser = require('body-parser')
+
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
 app.use(express.static(__dirname + '/htdocs'));
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
