@@ -69,7 +69,7 @@ $.jsonRPC.setup({
 				
 		})
 		.run(function(gettextCatalog){
-			gettextCatalog.currentLanguage = "sv-SE"; 
+			gettextCatalog.currentLanguage = "se"; 
 			gettextCatalog.debug = true; 
 		}); 
 	
