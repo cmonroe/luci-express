@@ -36,11 +36,6 @@ $.jsonRPC.setup({
         }
     }]);
 	
-	angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
-	/* jshint -W100 */
-		gettextCatalog.setStrings('sv-SE', {"About":"Om","Test":"Jag testar"});
-	/* jshint +W100 */
-	}]);
 	var luci = angular.module("luci", [
 		"ui.bootstrap",
 		"ui.router", 
