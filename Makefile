@@ -7,7 +7,6 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luciexpress
-#PKG_VERSION:=$(shell git --git-dir=$(CURDIR)/../.git log -1 --pretty="%ci %h" | awk '{ print $$1 "-" $$4 }')
 PKG_VERSION:=2015-02-14-e452ca6
 PKG_MAINTAINER:=Martin K. Schröder <mkschreder.uk@gmail.com>
 

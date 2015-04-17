@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
-PROJECT(luci2-io C)
+PROJECT(luciexpress-io C)
 
 INCLUDE(CheckFunctionExists)
 
@@ -13,7 +13,7 @@ IF(APPLE)
   LINK_DIRECTORIES(/opt/local/lib)
 ENDIF()
 
-ADD_EXECUTABLE(luci2-io main.c multipart_parser.c)
-TARGET_LINK_LIBRARIES(luci2-io ubox ubus)
+ADD_EXECUTABLE(luciexpress-io main.c multipart_parser.c)
+TARGET_LINK_LIBRARIES(luciexpress-io ubox ubus)
 
-INSTALL(TARGETS luci2-io RUNTIME DESTINATION sbin)
+INSTALL(TARGETS luciexpress-io RUNTIME DESTINATION sbin)
