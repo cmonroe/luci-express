@@ -1,5 +1,29 @@
 angular.module("luci")
-.config(function($stateProvider){
+.config(function($stateProvider, $navigationProvider){
+	$navigationProvider.register({
+		path: "status", 
+		text: "Status", 
+		page: "/views/status.html", 
+		access_policy: {
+			groups: ["admin"]
+		}
+	}); 
+	$navigationProvider.register({
+		path: "system", 
+		text: "System", 
+		page: "/views/status.html", 
+		access_policy: {
+			groups: ["admin"]
+		}
+	}); 
+	$navigationProvider.register({
+		path: "status.overview", 
+		text: "Overview", 
+		page: "/views/status.overview.html", 
+		access_policy: {
+			groups: ["admin"]
+		}
+	}); 
 	$stateProvider.state("status_overview",
 		{
 			url: "/status.overview", 

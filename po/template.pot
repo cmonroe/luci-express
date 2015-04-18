@@ -8,53 +8,53 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:38
+#: htdocs/views/status.dsl.html:46
 msgid "Actual Data Rate"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:28
+#: htdocs/views/status.dsl.html:36
 msgid "Bit Rate"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:65
+#: htdocs/views/status.dsl.html:73
 msgid "CRC Errors"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:76
+#: htdocs/views/status.dsl.html:84
 msgid "Cell Counter"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:21
+#: htdocs/views/status.dsl.html:29
 msgid "Configured"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:22
+#: htdocs/views/status.dsl.html:30
 msgid "Current"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:2
+#: htdocs/views/status.dsl.html:3
 msgid "DSL Connection"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:9
+#: htdocs/views/status.dsl.html:7
 msgid "DSL Mode"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:16
+#: htdocs/views/status.dsl.html:24
 msgid "DSL Status Information"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:33
-#: htdocs/views/status.dsl.html:48
-#: htdocs/views/status.dsl.html:60
+#: htdocs/views/status.dsl.html:41
+#: htdocs/views/status.dsl.html:56
+#: htdocs/views/status.dsl.html:68
 msgid "Downstream"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:55
+#: htdocs/views/status.dsl.html:63
 msgid "Error Counter"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:64
+#: htdocs/views/status.dsl.html:72
 msgid "FEC Corrections"
 msgstr ""
 
@@ -62,35 +62,35 @@ msgstr ""
 msgid "Free"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:59
+#: htdocs/views/status.dsl.html:67
 msgid "Indicator Name"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:25
+#: htdocs/views/status.dsl.html:33
 msgid "Line Status"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:26
+#: htdocs/views/status.dsl.html:34
 msgid "Link Type"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:53
+#: htdocs/views/status.dsl.html:61
 msgid "Loop Attenuation"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:43
+#: htdocs/views/status.dsl.html:51
 msgid "Operating Data"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:73
+#: htdocs/views/status.dsl.html:81
 msgid "Received Cells"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:52
+#: htdocs/views/status.dsl.html:60
 msgid "SNR Margin"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:67
+#: htdocs/views/status.dsl.html:75
 msgid "Statistics"
 msgstr ""
 
@@ -98,12 +98,16 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:72
+#: htdocs/views/status.dsl.html:80
 msgid "Transmitted Cells"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:34
-#: htdocs/views/status.dsl.html:49
-#: htdocs/views/status.dsl.html:61
+#: htdocs/views/status.dsl.html:42
+#: htdocs/views/status.dsl.html:57
+#: htdocs/views/status.dsl.html:69
 msgid "Upstream"
+msgstr ""
+
+#: htdocs/widgets/table.html:5
+msgid "label"
 msgstr ""

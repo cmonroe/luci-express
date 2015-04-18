@@ -4,8 +4,10 @@
   "dependencies": {
 		"JSON": "*", 
 		"express": "*", 
-		"body-parser": "*"
-  },
+		"body-parser": "*",
+		"grunt": "*",
+ 		"grunt-angular-gettext": "*"
+ },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"

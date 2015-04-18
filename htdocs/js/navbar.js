@@ -1,3 +1,14 @@
+
+angular.module("luci").controller("NavigationCtrl", function($scope, $navigation){
+	$scope.tree = $navigation.tree(); 
+	$scope.hasChildren = function(menu){
+		return Object.keys(menu.children) > 0; 
+	}
+	$scope.isActive = function (viewLocation) { 
+		return viewLocation === $location.path();
+	};
+}); 
+
 angular.module('autoActive', [])
 		.directive('autoActive', ['$location', function ($location) {
 		return {
@@ -24,3 +35,4 @@ angular.module('autoActive', [])
 				}
 		}
 }]);
+

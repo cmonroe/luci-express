@@ -1,36 +1,38 @@
 <div id="dslstats" ng-controller="StatsCtrl">
-	<inteno-table 
-		title="{{ 'DSL Connection' | translate }}"
+	<luci-table 
+		title="'DSL Connection'"
 		data="dslConnectionInfo">
-	</inteno-table>
-	
-	<legend><span translate>DSL Connection</span></legend>
-	<table class="table table-condensed table-hover">
-		<tr>
-			<td class="col-md-6">{{ dslstats.ip }}</td>
-			<td class="col-md-6">{{ dslstats.ipstate }}</td>
-		</tr>
-	</table>
-	<legend><span translate>DSL Mode</span></legend>
-	<table class="table table-condensed table-hover">
-		<tr>
-			<td class="col-md-6">{{ dslstats.mode }}</td>
-			<td class="col-md-6">{{ dslstats.mode_details }}</td>
-		</tr>
-	</table>
-	<legend><span translate>DSL Status Information</span></legend>
-	<table class="table table-condensed table-hover">
-		<thead>
-			<tr>
-				<th class="col-md-4"></th>
-				<th class="col-md-4"><span translate>Configured</span></th>
-				<th class="col-md-4"><span translate>Current</span></th>
-			</tr>
-		</thead>
-		<tr><td><span translate>Line Status</span></td><td>{{ dslstats.line_status_configured }}</td><td>{{ dslstats.status }}</td></tr>
-		<tr><td><span translate>Link Type</span></td><td>{{ dslstats.line_type_configured }}</td><td>{{ dslstats.line_type }}</td></tr>
-	</table>
-	<legend><span translate>Bit Rate</span></legend>
+	</luci-table>
+	<luci-table 
+		title="'DSL Mode'"
+		data="dslModeInfo">
+	</luci-table>
+	<luci-table
+		title="'DSL Status Information'"
+		columns="[ '', 'Configured', 'Current' ]"
+		data="dslStatusInfo">
+	</luci-table>
+	<luci-table
+		title="'Bit Rate'"
+		columns="[ '', 'Downstream', 'Upstream' ]"
+		data="dslRateInfo">
+	</luci-table>
+	<luci-table
+		title="'Operating Data'"
+		columns="[ '', 'Downstream', 'Upstream' ]"
+		data="dslOpInfo">
+	</luci-table>
+	<luci-table
+		title="'Error Counter'"
+		columns="[ '', 'Downstream', 'Upstream' ]"
+		data="dslErrorInfo">
+	</luci-table>
+	<luci-table
+		title="'Cell Statistics'"
+		columns="[ '', 'Transmitted', 'Received' ]"
+		data="dslCellInfo">
+	</luci-table>
+	<!--<legend><span translate>Bit Rate</span></legend>
 	<table class="table table-condensed table-hover">
 		<thead>
 			<tr>
@@ -79,5 +81,5 @@
 			</tr>
 		</thead>
 		<tr><td><span translate>Cell Counter</span></td><td>{{ dslstats.bearers[0].total_cells_down }}</td><td>{{ dslstats.bearers[0].total_cells_up }}</td></tr>
-	</table>
+	</table>-->
 </div>

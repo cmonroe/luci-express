@@ -52,16 +52,25 @@ angular.module("luci", [
 			
 			
 	})
-	.run(function(gettextCatalog){
+	.run(function($rootScope, $state, $session, gettextCatalog){
 		gettextCatalog.currentLanguage = "se"; 
 		gettextCatalog.debug = true; 
+		$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      if (toState.access_policy && !$session.auth(toState.access_policy)){
+        // User isn’t authenticated
+        $state.transitionTo("login");
+        event.preventDefault(); 
+      }
+    });
 	}); 
 	
 angular.module("luci")
-	.directive("intenoTable", function(){
+	.directive("luciTable", function(){
 		return {
 			scope: {
-				data: "=data"
+				data: "=data", 
+				columns: "=", 
+				title: "="
 			}, 
 			templateUrl: "widgets/table.html", 
 			replace: true, 
@@ -69,6 +78,12 @@ angular.module("luci")
 			controllerAs: "ctrl"
 		}; 
 	}).controller("TableControl", function($scope){
+		$scope.data = {}; 
+		if($scope.columns && $scope.columns.length){
+			if(!$scope.data.hasOwnProperty("columns"))
+				$scope.data.columns = []; 
+			Object.assign($scope.data.columns, $scope.columns); 
+		}
 		/*$scope.data = {
 			columns: ["test", "bar", "foo"], 
 			rows: [["1", "2", "4"], ["a", "b", "c"]]
@@ -133,11 +148,59 @@ angular.module("luci").factory('$rpc', function($rootScope){
 	return ret; 
 }); 
 
+angular.module("luci").provider('$navigation', function navigationProvider(){
+	var data = {
+		children: {},
+		children_list: []
+	}; 
+	var self = this; 
+	this.tree = function(){
+		return data; 
+	}
+	this.register = function(item){
+		if(!item.path) return; 
+		var parts = item.path.split("."); 
+		var obj = data; 
+		while(parts.length > 1){
+			if(obj.children.hasOwnProperty(parts[0])){
+				obj = obj.children[parts.shift()]; 
+			} else {
+				obj.children[parts[0]] = {
+					children: {},
+					children_list: []
+				};
+				obj = obj.children[parts.shift()]; 
+			}
+		} 
+		if(!item.children) item.children = {}; 
+		if(!obj.children.hasOwnProperty(parts[0])){
+			obj.children[parts[0]] = item; 
+			obj.children_list.push(item); 
+		} else {
+			var o = obj.children[parts[0]]; 
+			var children = o.children; 
+			Object.assign(o, item);
+			Object.assign(o.children, children); 
+		}
+		obj.children_list = Object.keys(obj.children).map(key => obj.children[key]);
+		
+		//alert(JSON.stringify(data)); 
+		return data; 
+	}; 
+	this.$get = function() {
+		return self; 
+	}
+}); 
+
 angular.module("luci").factory('$session', function($rpc, $rootScope) {
 	return {
 		sid: "00000000000000000000000000000000", 
 		loggedIn: function(){
 			
+		}, 
+		auth: function(access_policy){
+			// here check if the user is allowed to access the auth object
+			return 0; 
 		}, 
 		login: function(obj, success, error){
 			var self = this; 

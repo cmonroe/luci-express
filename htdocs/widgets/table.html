@@ -1,11 +1,11 @@
 <div>
-	<legend>{{ title }}</legend>
+	<legend>{{ title | translate}}</legend>
 	<table class="table table-bordered" >
 		<thead>
-			<th ng-repeat="label in data.columns">{{ label }}</th>
+			<th ng-repeat="label in data.columns  track by $index">{{ label | translate }}</th>
 		</thead>
-		<tr ng-repeat="row in data.rows">
-			<td ng-repeat="cell in row">
+		<tr ng-repeat="row in data.rows ">
+			<td ng-repeat="cell in row track by $index">
 				{{ cell }}
 			</td>
 		</tr>
