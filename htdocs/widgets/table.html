@@ -1,0 +1,13 @@
+<div>
+	<legend>{{ title }}</legend>
+	<table class="table table-bordered" >
+		<thead>
+			<th ng-repeat="label in data.columns">{{ label }}</th>
+		</thead>
+		<tr ng-repeat="row in data.rows">
+			<td ng-repeat="cell in row">
+				{{ cell }}
+			</td>
+		</tr>
+	</table>
+</div>

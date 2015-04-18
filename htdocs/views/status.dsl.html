@@ -1,4 +1,9 @@
 <div id="dslstats" ng-controller="StatsCtrl">
+	<inteno-table 
+		title="{{ 'DSL Connection' | translate }}"
+		data="dslConnectionInfo">
+	</inteno-table>
+	
 	<legend><span translate>DSL Connection</span></legend>
 	<table class="table table-condensed table-hover">
 		<tr>

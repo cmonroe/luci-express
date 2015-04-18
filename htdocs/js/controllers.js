@@ -57,76 +57,62 @@ angular.module("luci")
 	})
 	.controller("StatsCtrl", function($scope, $rpc, $session){
 		$scope.dslstats = {}; 
-		$session.login({
-			username: "root", 
-			password: "test"
-		}, function(sid){
-			$rpc.router.dslstats({}, function(dslstats){
-				dslstats = dslstats.dslstats; 
-				
-				// todo fields
-				with({dslstats: dslstats}){
-					dslstats.ip = "TODO"; 
-					dslstats.ipstate = "TODO"; 
-					dslstats.mode_details = "TODO"; 
-					dslstats.line_status_configured = "TODO"; 
-					dslstats.line_type_configured = "TODO"; 
-					dslstats.line_type = "TODO"; 
-				}
-				
-				// compute floating point values (because ubus blobs do not support floats yet)
-				function reconstruct_floats(obj) {
-					for (var property in obj) {
-						if (obj.hasOwnProperty(property)) {
-							if (typeof obj[property] == "object") {
-								reconstruct_floats(obj[property]);
-							} else {
-								var matches = property.match(/(.*)_x([\d]*)/); 
-								if(matches && matches.length == 3){
-									try {
-										obj[matches[1]] = parseFloat(String(obj[property])) / parseFloat(matches[2]); 
-									} catch(e) {
-										obj[matches[1]] = "Err"; 
-									}
+		
+		$scope.dslConnectionInfo = {
+			rows: []
+		}; 
+		
+		setTimeout(function(){
+			$scope.dslConnectionInfo.rows.push(
+				["test", "bar"]
+			); 
+			$scope.$apply(); 
+		}, 1000); 
+	
+		$rpc.router.dslstats({}, function(dslstats){
+			dslstats = dslstats.dslstats; 
+			
+			// todo fields
+			with({dslstats: dslstats}){
+				dslstats.ip = "TODO"; 
+				dslstats.ipstate = "TODO"; 
+				dslstats.mode_details = "TODO"; 
+				dslstats.line_status_configured = "TODO"; 
+				dslstats.line_type_configured = "TODO"; 
+				dslstats.line_type = "TODO"; 
+			}
+			
+			$scope.dslConnectionInfo.rows = [
+				[ dslstats.ip, dslstats.ipstate ]
+			]; 
+			
+			// compute floating point values (because ubus blobs do not support floats yet)
+			function reconstruct_floats(obj) {
+				for (var property in obj) {
+					if (obj.hasOwnProperty(property)) {
+						if (typeof obj[property] == "object") {
+							reconstruct_floats(obj[property]);
+						} else {
+							var matches = property.match(/(.*)_x([\d]*)/); 
+							if(matches && matches.length == 3){
+								try {
+									obj[matches[1]] = parseFloat(String(obj[property])) / parseFloat(matches[2]); 
+								} catch(e) {
+									obj[matches[1]] = "Err"; 
 								}
 							}
 						}
 					}
 				}
-				reconstruct_floats(dslstats); 
-				
-				//alert("Settings stats to: "+JSON.stringify(stats)); 
-				$scope.dslstats = dslstats; 
-				$scope.$apply(); 
-			}); 
-		}); 
-	})
-	.controller("StatsOverviewCtrl", function ($scope, $session, $rootScope, $rpc) {
-		$scope.sysinfo = {}; 
-		$scope.info = {}; 
-		$session.login({
-			username: "root", 
-			password: "test"
-		}, function(sid){
-			$rpc.router.info({}, function(stats){
-				$scope.info = stats; 
-				$scope.$apply(); 
-			}); 
-			$rpc.system.info({}, function(sysinfo){
-				sysinfo.date = String(new Date(sysinfo.localtime));
-				sysinfo.loadavg = (sysinfo.load[0] * 0.0001) + " " + (sysinfo.load[1] * 0.0001) + " "+ (sysinfo.load[2] * 0.0001);
-				sysinfo.memory.free_pcnt = ((sysinfo.memory.free / sysinfo.memory.total) * 100); 
-				sysinfo.memory.buffered_pcnt = (sysinfo.memory.buffered / sysinfo.memory.total) * 100; 
-				sysinfo.memory.buffered_kb = sysinfo.memory.buffered / 1000; 
-				sysinfo.memory.free_kb = sysinfo.memory.free / 1000; 
-				sysinfo.memory.shared_kb = sysinfo.memory.shared / 1000; 
-				$scope.sysinfo = sysinfo; 
-				$scope.$apply(); 
-			}); 
-		}, function(result){
+			}
+			reconstruct_floats(dslstats); 
 			
+			//alert("Settings stats to: "+JSON.stringify(stats)); 
+			$scope.dslstats = dslstats; 
+			$scope.$apply(); 
 		}); 
 	})
+	
 	.controller("BodyCtrl", function ($scope, $location, $window) {
 		
 		$scope.menuClass = function(page) {
