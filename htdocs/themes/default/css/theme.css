@@ -1,0 +1,7 @@
+div.logo {
+	background-image: url('../../img/luci_default.png'); 
+	background-size: 100% auto; 
+	height: 20px; 
+	width: 91px; 
+	margin-left: 20px;
+}

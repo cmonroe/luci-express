@@ -1,6 +1,10 @@
 angular.module("luci")
 .factory('$config', function($rootScope){
-	var config = {
+	return {
+		themes: {
+			"default": "/themes/default/",
+			"red" : "/themes/inteno-red/"
+		}, 
 		rpc: {
 			exposed_calls: [
 				"session.login", 
@@ -10,5 +14,4 @@ angular.module("luci")
 			]
 		}
 	}; 
-	return config; 
 }); 

@@ -11,7 +11,7 @@ angular.module("luci")
 		controllerAs: "ctrl"
 	}; 
 })
-.controller("NavigationCtrl", function($scope, $navigation){
+.controller("NavigationCtrl", function($scope, $navigation, $config){
 	$scope.tree = $navigation.tree(); 
 	$scope.hasChildren = function(menu){
 		return Object.keys(menu.children) > 0; 
@@ -20,15 +20,15 @@ angular.module("luci")
 		return viewLocation === $location.path();
 	};
 	$(function(){
-		var themes = {
-			"default": "/bower_components/bootstrap/dist/css/bootstrap.min.css",
-			"red" : "/themes/red/css/bootstrap.min.css"
-		}
-		var themesheet = $('<link href="'+themes['default']+'" rel="stylesheet" />');
-		themesheet.appendTo('head');
+		var themes = $config.themes; 
+		var bootstrap = $('<link href="'+themes['default']+'/css/bootstrap.min.css" rel="stylesheet" />');
+		var theme = $('<link href="'+themes['default']+'/css/theme.css" rel="stylesheet" />');
+		bootstrap.appendTo('head');
+		theme.appendTo('head'); 
 		$('.theme-link').click(function(){
-			 var themeurl = themes[$(this).attr('data-theme')]; 
-				themesheet.attr('href',themeurl);
+			var themeurl = themes[$(this).attr('data-theme')]; 
+			bootstrap.attr('href',themeurl+"/css/bootstrap.min.css");
+			theme.attr('href',themeurl+"/css/theme.css");
 		});
 	});
 }); 
