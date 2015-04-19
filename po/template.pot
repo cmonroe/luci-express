@@ -8,106 +8,10 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:46
-msgid "Actual Data Rate"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:36
-msgid "Bit Rate"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:73
-msgid "CRC Errors"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:84
-msgid "Cell Counter"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:29
-msgid "Configured"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:30
-msgid "Current"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:3
-msgid "DSL Connection"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:7
-msgid "DSL Mode"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:24
-msgid "DSL Status Information"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:41
-#: htdocs/views/status.dsl.html:56
-#: htdocs/views/status.dsl.html:68
-msgid "Downstream"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:63
-msgid "Error Counter"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:72
-msgid "FEC Corrections"
-msgstr ""
-
 #: htdocs/views/status.overview.html:42
 msgid "Free"
 msgstr ""
 
-#: htdocs/views/status.dsl.html:67
-msgid "Indicator Name"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:33
-msgid "Line Status"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:34
-msgid "Link Type"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:61
-msgid "Loop Attenuation"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:51
-msgid "Operating Data"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:81
-msgid "Received Cells"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:60
-msgid "SNR Margin"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:75
-msgid "Statistics"
-msgstr ""
-
 #: htdocs/views/about.html:3
 msgid "Test"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:80
-msgid "Transmitted Cells"
-msgstr ""
-
-#: htdocs/views/status.dsl.html:42
-#: htdocs/views/status.dsl.html:57
-#: htdocs/views/status.dsl.html:69
-msgid "Upstream"
-msgstr ""
-
-#: htdocs/widgets/table.html:5
-msgid "label"
 msgstr ""

@@ -3,13 +3,13 @@ angular.module("luci")
 	$navigationProvider.register({
 		path: "status.dsl", 
 		text: "DSL", 
-		page: "/views/status.dsl.html", 
+		page: "/pages/status.dsl.html", 
 		access_policy: {
 			groups: ["admin"]
 		}
 	}); 
 })
-.controller("StatsCtrl", function($scope, $rpc, $session){
+.controller("StatsCtrl", function($scope, $rpc, $session, gettext, gettextCatalog){
 		$scope.dslstats = {}; 
 		
 		$scope.dslConnectionInfo = {
@@ -17,7 +17,7 @@ angular.module("luci")
 			rows: [["None", "None"]]
 		}; 
 		$scope.dslModeInfo = {
-			rows: [["None", "None"]]
+			rows: [[gettextCatalog.getString('None'), "None"]]
 		}; 
 		$scope.dslStatusInfo = {
 			rows: []
@@ -40,7 +40,7 @@ angular.module("luci")
 			
 			// todo fields
 			with({dslstats: dslstats}){
-				dslstats.ip = "TODObash get directory of file"; 
+				dslstats.ip = "TODO"; 
 				dslstats.ipstate = "TODO"; 
 				dslstats.mode_details = "TODO"; 
 				dslstats.line_status_configured = "TODO"; 
@@ -79,8 +79,8 @@ angular.module("luci")
 				[ dslstats.mode, dslstats.mode_details ]
 			]; 
 			$scope.dslStatusInfo.rows = [
-				[ 'Line Status', dslstats.line_status_configured, dslstats.line_status ], 
-				[ 'Line Type', dslstats.line_type_configured, dslstats.line_type ]
+				[ gettext('Line Status'), dslstats.line_status_configured, dslstats.line_status ], 
+				[ gettext('Line Type'), dslstats.line_type_configured, dslstats.line_type ]
 			]
 			$scope.dslstats = dslstats; 
 			$scope.$apply(); 
