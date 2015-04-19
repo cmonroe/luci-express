@@ -40,7 +40,10 @@ angular.module("luci")
 				obj = obj.children[parts.shift()]; 
 			}
 		} 
-		if(!item.children) item.children = {}; 
+		if(!item.children) {
+			item.children = {}; 
+			item.children_list = []; 
+		}
 		if(!obj.children.hasOwnProperty(parts[0])){
 			obj.children[parts[0]] = item; 
 			obj.children_list.push(item); 

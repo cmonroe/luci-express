@@ -13,7 +13,7 @@
     "angular-ui-bootstrap": "*",
     "angular-ui-router": "*",
     "bootstrap": "*",
-    "jquery": "*",
+    "jquery": "*"
   },
   "devDependencies": {
   

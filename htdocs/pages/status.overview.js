@@ -1,12 +1,5 @@
 angular.module("luci")
-.config(function($stateProvider, $navigationProvider){
-	$navigationProvider.register({
-		path: "status", 
-		text: "Status", 
-		access_policy: {
-			groups: ["admin"]
-		}
-	}); 
+.config(function($stateProvider, $navigationProvider){ 
 	$navigationProvider.register({
 		path: "status.overview", 
 		text: "Overview", 

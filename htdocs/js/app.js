@@ -36,6 +36,5 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $location, $wind
 
 $(document).ready(function(){
 	
-	
 	$("#loading-indicator").hide(); 
 }); 
