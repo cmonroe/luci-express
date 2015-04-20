@@ -2,7 +2,7 @@
     "settings": {
         "title": "Settings",
         "view": "settings.password",
-        "index": 20
+        "index": 50
     },
     "settings/password": {
         "title": "EasyBox Password",

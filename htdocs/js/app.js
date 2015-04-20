@@ -51,13 +51,14 @@ angular.module("luci", [
 			//console.log(JSON.stringify(data)); 
 			Object.keys(data.menu).map(function(key){
 				var view = data.menu[key].view; 
-				var path = (view || key).replace("/", "."); 
+				var path = key.replace("/", "."); 
 				var obj = {
 					path: path, 
-					text: data.menu[key].title
+					text: data.menu[key].title, 
+					index: data.menu[key].index || 0
 				}; 
 				if(view){
-					obj.path = view.replace("/", "."); 
+					obj.page = "/pages/"+view.replace("/", ".")+".html"; 
 				}
 				$navigation.register(obj); 
 			}); 

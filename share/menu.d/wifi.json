@@ -2,7 +2,7 @@
     "wifi": {
         "title": "WiFi",
         "view": "wifi.general",
-        "index": 10
+        "index": 40
     },
     "wifi/general": {
         "title": "General",

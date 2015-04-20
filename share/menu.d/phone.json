@@ -2,7 +2,7 @@
 	"phone": {
 		"title": "Phone", 
 		"view": "phone.call_log",
-		"index": 40
+		"index": 20
 	}, 
 	"phone/call_log": {
 		"title": "Call Log",
