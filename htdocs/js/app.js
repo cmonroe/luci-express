@@ -23,7 +23,7 @@ angular.module("luci", [
 		$locationProvider.hashPrefix('!');
 		//$stateProvider.otherwise("login"); 
 		//$urlRouterProvider.otherwise("/otherwise"); 
-		$stateProvider.state("home", {
+		$stateProvider.state("/", {
 			url: "", 
 			views: {
 				"content": {
@@ -46,6 +46,7 @@ angular.module("luci", [
 				var path = key.replace("/", "."); 
 				var obj = {
 					path: path, 
+					modes: data.menu[key].modes || [ ], 
 					text: data.menu[key].title, 
 					index: data.menu[key].index || 0
 				}; 
@@ -68,6 +69,11 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $state, $session
 		id: 0, 
 		label: "Basic Mode"
 	}]; 
+	
+	$config.mode = localStorage.getItem("mode") || "basic"; 
+	setTimeout(function(){
+		$("#guiMode").selectpicker('val', $config.mode || "basic"); 
+	}, 0); 
 	$("#guiMode").on("change", function(){
 		var selected = $(this).find("option:selected").val();
 		console.log(selected); 
@@ -77,11 +83,13 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $state, $session
 			}); 
 		} else {
 			$config.mode = selected; 
+			$state.reload(); 
 		}
+		localStorage.setItem("mode", selected); 
 	}); 
 	$session.init().done(function(){
 		// make browser refresh work
-		$state.transitionTo($location.path().replace("/", "").replace(".", "_")); 
+		$state.transitionTo($location.path().replace("/", "").replace(".", "_")||"/"); 
 		//$rootScope.$apply(); 
 	}).fail(function(){
 		$location.path("/login"); 
@@ -90,6 +98,5 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $state, $session
 })
 
 $(document).ready(function(){
-	
 	$("#loading-indicator").hide(); 
 }); 

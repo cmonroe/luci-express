@@ -32,8 +32,11 @@ angular.module("luci")
 		}, 0); 
   });
   $scope.itemVisible = function(item){
-		if(item.mode && $config.mode == item.mode) return true; 
-		else return false; 
+		if(!item.modes.length) return true; 
+		else if(item.modes && item.modes.indexOf($config.mode) == -1) {
+			return false; 
+		} 
+		else return true; 
 	} 
 	/*$scope.$on('$locationChangeSuccess', function () {
 		var path = $location.path().replace(/^\/+|\/+$/g, ''); 
