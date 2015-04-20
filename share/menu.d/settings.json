@@ -1,6 +1,7 @@
 {
     "settings": {
         "title": "Settings",
+        "view": "settings.password",
         "index": 20
     },
     "settings/password": {

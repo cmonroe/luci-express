@@ -1,6 +1,7 @@
 {
     "internet": {
         "title": "Internet",
+        "view": "internet.firewall",
         "index": 30
     },
     "internet/firewall": {

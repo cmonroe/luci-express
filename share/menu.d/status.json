@@ -1,6 +1,7 @@
 {
     "status": {
         "title": "Status",
+				"view": "status.overview",
         "index": 10
     },
     "status/overview": {

@@ -48,15 +48,18 @@ angular.module("luci", [
 		
 		// get the menu navigation
 		$rpc.luci2.ui.menu().done(function(data){
-			console.log(JSON.stringify(data)); 
+			//console.log(JSON.stringify(data)); 
 			Object.keys(data.menu).map(function(key){
-				var path = (data.menu[key].view || key).replace("/", "."); 
-				console.log(path); 
-				$navigation.register({
+				var view = data.menu[key].view; 
+				var path = (view || key).replace("/", "."); 
+				var obj = {
 					path: path, 
-					text: data.menu[key].title, 
-					page: "/pages/"+path+".html", 
-				}); 
+					text: data.menu[key].title
+				}; 
+				if(view){
+					obj.path = view.replace("/", "."); 
+				}
+				$navigation.register(obj); 
 			}); 
 			$rootScope.$apply(); 
 			/*var tree = {children_list: []}; 
