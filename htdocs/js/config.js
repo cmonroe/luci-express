@@ -1,13 +1,12 @@
-angular.module("luci")
-.factory('$config', function($rootScope){
+angular.module("luci").factory('$config', function($rootScope){
 	return {
 		mode: "basic", // basic or expert supported
 		themes: {
 			"default": "/themes/default/",
-			"red" : "/themes/inteno-red/"
+			"red" : "/themes/default-red/"
 		}, 
 		rpc: {
-			host: "http://192.168.1.1", 
+			host: "http://192.168.1.1", // default is the same host that runs the gui 
 			exposed_calls: [
 				"session.login", 
 				"session.access", 
