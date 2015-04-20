@@ -1,6 +1,7 @@
 angular.module("luci")
 .factory('$config', function($rootScope){
 	return {
+		mode: "basic", // basic or expert supported
 		themes: {
 			"default": "/themes/default/",
 			"red" : "/themes/inteno-red/"

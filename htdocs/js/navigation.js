@@ -56,7 +56,7 @@ angular.module("luci")
 		}
 		obj.children_list = Object.keys(obj.children).map(key => obj.children[key]);
 		obj.children_list.sort(function(a, b){
-			return b.index - a.index; 
+			return a.index - b.index; 
 		}); 
 		return item; 
 	}

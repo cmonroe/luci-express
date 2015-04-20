@@ -22,9 +22,9 @@ angular.module("luci", [
 		//$locationProvider.otherwise({ redirectTo: "/" });
 		$locationProvider.hashPrefix('!');
 		//$stateProvider.otherwise("login"); 
-		$urlRouterProvider.otherwise("/"); 
+		//$urlRouterProvider.otherwise("/otherwise"); 
 		$stateProvider.state("home", {
-			url: "/", 
+			url: "", 
 			views: {
 				"content": {
 					templateUrl: "pages/overview.html"
@@ -37,14 +37,6 @@ angular.module("luci", [
 		// set current language
 		gettextCatalog.currentLanguage = "se"; 
 		//gettextCatalog.debug = true; 
-		// make sure that we redirect to login page if we are not logged in
-		/*$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-		  if ($session.isLoggedIn()){
-			// User isn’t authenticated
-			$state.transitionTo("login");
-			event.preventDefault(); 
-		  }
-		});*/
 		
 		// get the menu navigation
 		$rpc.luci2.ui.menu().done(function(data){
@@ -63,40 +55,37 @@ angular.module("luci", [
 				$navigation.register(obj); 
 			}); 
 			$rootScope.$apply(); 
-			/*var tree = {children_list: []}; 
-			Object.keys(data.menu).map(function(key){
-				var parts = key.split("/"); 
-				var obj = tree; 
-				var parent = tree; 
-				var insert = {
-					path: (data.menu[key].view || "").replace("/", "."), 
-					text: data.menu[key].title,
-					children_list: []
-				}; 
-				// find the leaf and the parent of the leaf
-				parts.map(function(part){
-					if(obj.hasOwnProperty(part)) {
-						parent = obj; 
-						obj = obj[part]; 
-					} else {
-						obj[part] = {children_list: []}; 
-						parent = obj; 
-						obj = obj[part]; 
-					}
-				}); 
-				Object.assign(obj, insert); 
-				parent.children_list.push(obj); 
-			}); */
 		}); 
 	})
 	
-angular.module("luci").controller("BodyCtrl", function ($scope, $session, $location, $window) {
+angular.module("luci").controller("BodyCtrl", function ($scope, $state, $session, $location, $window, $rootScope, $config) {
 	$scope.menuClass = function(page) {
 		var current = $location.path().substring(1);
 		return page === current ? "active" : "";
 	};
-	$session.init().fail(function(){
+	$scope.mode = ""; 
+	$scope.modeList = [{
+		id: 0, 
+		label: "Basic Mode"
+	}]; 
+	$("#guiMode").on("change", function(){
+		var selected = $(this).find("option:selected").val();
+		console.log(selected); 
+		if(selected == "logout") {
+			$session.logout().always(function(){
+				$window.location.href="/"; 
+			}); 
+		} else {
+			$config.mode = selected; 
+		}
+	}); 
+	$session.init().done(function(){
+		// make browser refresh work
+		$state.transitionTo($location.path().replace("/", "").replace(".", "_")); 
+		//$rootScope.$apply(); 
+	}).fail(function(){
 		$location.path("/login"); 
+		$state.transitionTo($location.path().replace("/", "").replace(".", "_")); 
 	}); 
 })
 
