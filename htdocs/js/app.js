@@ -13,6 +13,17 @@ function supports_html5_storage() {
   }
 }
 
+require.config({
+    baseUrl: '/',
+    urlArgs: 'v=1.0'
+});
+/*
+require([
+		'pages/overview',
+	], function () {
+		angular.bootstrap(document, ['luci']);
+});
+*/
 angular.module("luci", [
 	"ui.bootstrap",
 	"ui.router", 
@@ -71,9 +82,9 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $state, $session
 	}]; 
 	
 	$config.mode = localStorage.getItem("mode") || "basic"; 
-	setTimeout(function(){
+	/*setTimeout(function(){
 		$("#guiMode").selectpicker('val', $config.mode || "basic"); 
-	}, 0); 
+	}, 100); */
 	$("#guiMode").on("change", function(){
 		var selected = $(this).find("option:selected").val();
 		console.log(selected); 

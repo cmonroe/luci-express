@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var JSON = require("JSON"); 
+var fs = require("fs"); 
 
 var bodyParser = require('body-parser')
 
@@ -40,7 +41,31 @@ app.post('/ubus', function(req, res) {
     return;
   }
 	
-	console.log("Call: "+data.method+" "+JSON.stringify(data.params)); 
+	//console.log("Call: "+data.method+" "+JSON.stringify(data.params)); 
+	
+	if(data.params[1] == "luci2.ui" && data.params[2] == "menu"){
+		console.log("luci2.ui.menu"); 
+		res.send(JSON.stringify({
+			jsonrpc: "2.0", 
+			result: [0, {
+				menu: JSON.parse(fs.readFileSync("share/menu.d/overview.json"))
+			}]
+		})); 
+	} if(data.params[1] == "session" && data.params[2] == "access"){
+		console.log("luci2.ui.menu"); 
+		res.send(JSON.stringify({
+			jsonrpc: "2.0", 
+			result: [0, {
+				"access-group": [ "a", "b" ]
+			}]
+		})); 
+	} else {
+		res.send(JSON.stringify({
+			jsonrpc: "2.0",
+			result: {}
+		})); 
+	}
+	res.end(); 
 });
 
 var server = app.listen(3000, function () {

@@ -1,3 +1,4 @@
+
 // provides a service for managing all pages
 // pages register with this service, and menus can query it to get the navigation tree
 angular.module("luci")
@@ -66,15 +67,38 @@ angular.module("luci")
 		
 		// now also register with the routing service 
 		if(item.page){
-			$stateProvider.state(item.path.replace(".", "_"), {
-				url: "/"+item.path, 
-				views: {
-					"content": {
-						templateUrl: item.page
-					}
-				}, 
-				luci_config: item
-			}); 
+			(function(item){
+				var lazyPromise = null; 
+				$stateProvider.state(item.path.replace(".", "_"), {
+					url: "/"+item.path, 
+					views: {
+						"content": {
+							//templateUrl: item.page, 
+							//template: 'template', 
+							templateProvider: function($q, $state, $templateFactory, $templateCache, $http) {
+								//alert(lazyPromise); 
+								return lazyPromise; 
+							}, 
+							resolve: {
+								load: function($q, $http, $state, $templateCache, $rootScope){
+									var deferred = $q.defer();
+									lazyPromise = deferred.promise; 
+									require([
+										'pages/overview',
+									], function () {
+										$http.get("pages/"+item.path+".html", {cache: $templateCache}).then(function(html){
+											deferred.resolve(html.data); 
+										});
+									});
+									return deferred.promise;
+								}
+							}
+						}
+					},
+						
+					luci_config: item
+				}); 
+			})(item); 
 		}
 		//alert(JSON.stringify(data)); 
 		return data; 
