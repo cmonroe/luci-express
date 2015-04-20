@@ -2894,7 +2894,7 @@ rpc_luci2_api_init(const struct rpc_daemon_ops *o, struct ubus_context *ctx)
 
 
 	static const struct ubus_method luci2_ui_methods[] = {
-		UBUS_METHOD_NOARG("menu",            rpc_luci2_ui_menu),
+		UBUS_METHOD("menu",            rpc_luci2_ui_menu, rpc_menu_policy),
 		UBUS_METHOD_NOARG("acls",            rpc_luci2_ui_acls),
 		UBUS_METHOD("crypt",                 rpc_luci2_ui_crypt,
 		                                     rpc_data_policy)

@@ -55,6 +55,9 @@ angular.module("luci")
 			item = o; 
 		}
 		obj.children_list = Object.keys(obj.children).map(key => obj.children[key]);
+		obj.children_list.sort(function(a, b){
+			return a.index - b.index; 
+		}); 
 		return item; 
 	}
 	this.register = function(item){

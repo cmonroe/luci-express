@@ -10,7 +10,7 @@ angular.module("luci")
 		controllerAs: "ctrl"
 	}; 
 })
-.controller("NavCtrl", function($scope, $navigation, $location, $state, $rootScope){
+.controller("NavCtrl", function($scope, $navigation, $location, $state, $rootScope, $config){
 	var path = $location.path().replace(/^\/+|\/+$/g, ''); 
 	var subtree = path.split(".")[0]; 
 	
@@ -31,6 +31,13 @@ angular.module("luci")
 			$("nav ul a[href='#!"+path+"']").parent().addClass("open"); 
 		}, 0); 
   });
+  $scope.itemVisible = function(item){
+		if(!item.modes.length) return true; 
+		else if(item.modes && item.modes.indexOf($config.mode) == -1) {
+			return false; 
+		} 
+		else return true; 
+	} 
 	/*$scope.$on('$locationChangeSuccess', function () {
 		var path = $location.path().replace(/^\/+|\/+$/g, ''); 
 		var subtree = path.split(".")[0]; 

@@ -181,6 +181,7 @@
         $.ajax({
           type: 'POST',
           async: false !== options.async,
+          crossDomain: true,
           dataType: 'json',
           contentType: 'application/json',
           url: this._requestUrl((options.endPoint || options.url), options.cache),

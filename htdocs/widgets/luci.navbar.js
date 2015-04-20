@@ -11,10 +11,40 @@ angular.module("luci")
 		controllerAs: "ctrl"
 	}; 
 })
-.controller("NavigationCtrl", function($scope, $navigation, $config){
+.controller("NavigationCtrl", function($scope, $navigation, $config, $rpc){
 	$scope.tree = $navigation.tree(); 
+	/*$rpc.luci2.ui.menu().done(function(data){
+		console.log(JSON.stringify(data)); 
+		var tree = {children_list: []}; 
+		Object.keys(data.menu).map(function(key){
+			var parts = key.split("/"); 
+			var obj = tree; 
+			var parent = tree; 
+			var insert = {
+				path: (data.menu[key].view || "").replace("/", "."), 
+				text: data.menu[key].title,
+				children_list: []
+			}; 
+			// find the leaf and the parent of the leaf
+			parts.map(function(part){
+				if(obj.hasOwnProperty(part)) {
+					parent = obj; 
+					obj = obj[part]; 
+				} else {
+					obj[part] = {children_list: []}; 
+					parent = obj; 
+					obj = obj[part]; 
+				}
+			}); 
+			Object.assign(obj, insert); 
+			parent.children_list.push(obj); 
+		}); 
+		console.log(); 
+		$scope.tree = tree; 
+		$scope.$apply(); 
+	}); */
 	$scope.hasChildren = function(menu){
-		return Object.keys(menu.children) > 0; 
+		return menu.children_list > 0; 
 	}
 	$scope.isActive = function (viewLocation) { 
 		return viewLocation === $location.path();
