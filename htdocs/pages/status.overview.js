@@ -1,15 +1,4 @@
-angular.module("luci")
-.config(function($stateProvider, $navigationProvider){ 
-	/*$navigationProvider.register({
-		path: "status.overview", 
-		text: "Overview", 
-		page: "/pages/status.overview.html", 
-		access_policy: {
-			groups: ["admin"]
-		}
-	});*/ 
-})
-.controller("StatsOverviewCtrl", function ($scope, $session, $rootScope, $rpc, gettextCatalog) {
+angular.module("luci").controller("StatsOverviewCtrl", function ($scope, $session, $rootScope, $rpc, gettextCatalog) {
 	$scope.sysinfo = {}; 
 	$scope.info = {}; 
 	

@@ -9,12 +9,13 @@
   <!--<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   --><!--<link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
   -->
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
   <link href="/bower_components/angular-ui/build/angular-ui.min.css" rel="stylesheet" type="text/css" />
   
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body ng-controller="BodyCtrl" role="document">
+<body ng-controller="BodyCtrl" role="document" ng-cloak>
 	<div class="top-bar">
 		<div class="container">
 			<div class="row">
@@ -29,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-	<div ui-view="content"></div>
+	<div ui-view="content" ></div>
 	<!--<div class="container" role="main">
 		<div class="row">
 			<luci-navbar></luci-navbar>

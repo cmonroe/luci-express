@@ -38,19 +38,20 @@ angular.module("luci", [
 		gettextCatalog.currentLanguage = "se"; 
 		//gettextCatalog.debug = true; 
 		// make sure that we redirect to login page if we are not logged in
-		$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-		  if (toState.access_policy && !$session.auth(toState.access_policy)){
+		/*$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+		  if ($session.isLoggedIn()){
 			// User isn’t authenticated
 			$state.transitionTo("login");
 			event.preventDefault(); 
 		  }
-		});
+		});*/
 		
 		// get the menu navigation
 		$rpc.luci2.ui.menu().done(function(data){
 			console.log(JSON.stringify(data)); 
 			Object.keys(data.menu).map(function(key){
 				var path = (data.menu[key].view || key).replace("/", "."); 
+				console.log(path); 
 				$navigation.register({
 					path: path, 
 					text: data.menu[key].title, 
@@ -90,9 +91,8 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $session, $locat
 		var current = $location.path().substring(1);
 		return page === current ? "active" : "";
 	};
-	$session.init().done(function(loggedIn){
-		
-		//$location.path("/login"); 
+	$session.init().fail(function(){
+		$location.path("/login"); 
 	}); 
 })
 

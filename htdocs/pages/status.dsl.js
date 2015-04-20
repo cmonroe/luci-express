@@ -1,15 +1,4 @@
-angular.module("luci")
-.config(function($stateProvider, $navigationProvider){
-	/*$navigationProvider.register({
-		path: "status.dsl", 
-		text: "DSL", 
-		page: "/pages/status.dsl.html", 
-		access_policy: {
-			groups: ["admin"]
-		}
-	});*/ 
-})
-.controller("StatsCtrl", function($scope, $rpc, $session, gettext, gettextCatalog){
+angular.module("luci").controller("StatsCtrl", function($scope, $rpc, $session, gettext, gettextCatalog){
 		$scope.dslstats = {}; 
 		$scope.dslConnectionInfo = {
 			title: "test", 

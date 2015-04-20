@@ -3,6 +3,12 @@
         "title": "Status",
         "index": 10
     },
+    "status/overview": {
+				"title": "Status", 
+				"acls": [ "status" ], 
+				"view": "status.overview",
+				"index": 9
+		}, 
     "status/dsl": {
         "title": "DSL",
         "acls": [ "status" ],

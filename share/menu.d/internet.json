@@ -18,14 +18,12 @@
     "internet/exposed_host": {
         "title": "Exposed Host",
         "acls": [ "network" ],
-        "files": [ "/sbin/swconfig" ],
         "view": "internet.exposed_host",
         "index": 30
     },
     "internet/dns": {
         "title": "DNS",
         "acls": [ "hostnames" ],
-        "files": [ "/etc/config/dhcp" ],
         "view": "internet.dns",
         "index": 50
     }

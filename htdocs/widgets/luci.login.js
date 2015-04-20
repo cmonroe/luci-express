@@ -10,7 +10,7 @@ angular.module("luci")
 			controllerAs: "ctrl"
 		}; 
 	})
-	.controller("LoginControl", function($scope, $session, $state){
+	.controller("LoginControl", function($scope, $session, $state, $window, $location){
 		$scope.form = { "username": "", "password": "", "remember": 0 }; 
 		$scope.loggedIn = $session.isLoggedIn(); 
 		$scope.doLogin = function(){
@@ -19,7 +19,8 @@ angular.module("luci")
 				"password": $scope.form.password, 
 				"remember": $scope.form.remember
 			}).done(function success(res){
-				$state.transitionTo("home"); 
+				//$state.go("home", {}, {reload: true});
+				$window.location.href="/"; 
 			}).fail(function fail(res){
 				
 			}); 
@@ -27,7 +28,8 @@ angular.module("luci")
 		$scope.doLogout = function(){
 			$session.logout().done(function(){
 				console.log("Logged out!"); 
-				$state.transitionTo("home"); 
+				//$state.go("home", {}, {reload: true});
+				$window.location.href="/"; 
 			}); 
 		}
 	}); 
