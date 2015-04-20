@@ -12,34 +12,40 @@ angular.module("luci")
 				var namespace = call.split("."); 
 				namespace.pop(); namespace = namespace.join("."); 
 				(function(namespace, method){
-					obj[path[0]] = function(data, success, error){
-						var func = (function(data, success, error){
+					// create the rpc method
+					obj[path[0]] = function(data){
+						var func = (function(data){
+							if(!data) data = {}; 
+							var deferred = $.Deferred(); 
 							$.jsonRPC.withOptions({
 								namespace: "", 
-								endPoint: "/ubus"
+								endPoint: (($config.rpc.host)?$config.rpc.host:"")+"/ubus"
 							}, function(){	 
 								var sid = "00000000000000000000000000000000"; 
 								if($rootScope.sid) sid = $rootScope.sid; 
 								
-								//alert("SID: "+sid); 
 								this.request('call', {
 									params: [ sid, namespace, method, data],
 									success: function(result){
 										//alert("SID: "+sid + " :: "+ JSON.stringify(result)); 
-										if(result && result.result && success) {
-											if(result.result[0] != 0 && error) error(result.result[1]); 
-											else success(result.result[1]); 
+										if(result && result.result) {
+											if(result.result[0] != 0) {
+												console.log("RPC succeeded, but returned error: "+JSON.stringify(result));
+												deferred.reject(result.result[1]); 
+											} else deferred.resolve(result.result[1]); 
 										}
 									}, 
 									error: function(result){
 										console.log("RPC error: "+JSON.stringify(result)); 
-										if(result && result.result && error){
-											error(result.result); 
+										if(result && result.error){
+											deferred.reject(result.error); 
 										}
 									}
 								})
-							}); 
-						})(data, success, error); 
+							});
+							return deferred.promise(); 
+						}); 
+						return func(data); 
 					}
 				})(namespace, path[0]); 
 			} else {

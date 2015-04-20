@@ -3,40 +3,52 @@
         "title": "Status",
         "index": 10
     },
-    "status/overview": {
-        "title": "Overview",
+    "status/dsl": {
+        "title": "DSL",
         "acls": [ "status" ],
-        "view": "status/overview",
+        "view": "status.dsl",
         "index": 10
     },
-    "status/routes": {
-        "title": "Routes",
+    "status/voice": {
+        "title": "Voice",
         "acls": [ "status" ],
-        "view": "status/routes",
+        "view": "status.voice",
         "index": 20
     },
-    "status/syslog": {
-        "title": "System Log",
+    "status/tv": {
+        "title": "Vodaphone TV",
         "acls": [ "status" ],
-        "view": "status/syslog",
+        "view": "status.tv",
         "index": 30
     },
-    "status/dmesg": {
-        "title": "Kernel Log",
+    "status/diagnostics": {
+        "title": "Diagnostics",
         "acls": [ "status" ],
-        "view": "status/dmesg",
+        "view": "status.diagnostics",
         "index": 40
     },
-    "status/processes": {
-        "title": "Processes",
+    "status/events": {
+        "title": "Events",
         "acls": [ "status" ],
-        "view": "status/processes",
+        "view": "status.events",
         "index": 50
     }, 
-    "status/dsl": {
-		"title": "ADSL Status", 
-		"acls": [ "status" ], 
-		"view": "status/dsl", 
-		"index": 60
-	}
+    "status/restart": {
+			"title": "Restart", 
+			"acls": [ "status" ], 
+			"view": "status.restart", 
+			"index": 60
+		},
+    "status/about": {
+			"title": "About", 
+			"acls": [ "status" ], 
+			"view": "status.about", 
+			"index": 70
+		},
+    "status/nat": {
+			"title": "NAT", 
+			"acls": [ "status" ], 
+			"view": "status.nat", 
+			"index": 80
+		}
 }

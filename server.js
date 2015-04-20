@@ -4,6 +4,15 @@ var JSON = require("JSON");
 
 var bodyParser = require('body-parser')
 
+/* 
+Cross origin requests
+To allow cross origin requests from your local setup to your router, 
+add the following lines into target* -> uhttpd -> client -> uh_http_header() 
+
+ustream_printf(cl->us, "Access-Control-Allow-Origin: *\r\n"); 
+ustream_printf(cl->us, "Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept\r\n");  
+*/
+
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true

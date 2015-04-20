@@ -10,16 +10,24 @@ angular.module("luci")
 			controllerAs: "ctrl"
 		}; 
 	})
-	.controller("LoginControl", function($scope, $session){
-	$scope.form = { "username": "", "password": "", "remember": 0 }; 
-	$scope.doLogin = function(){
-		$session.login({
-			"username": $scope.form.username, 
-			"password": $scope.form.password
-		}, function success(res){
-			alert("Logged in!"); 
-		}, function fail(res){
-			alert("Login failed!"); 
-		}); 
-	}
-}); 
+	.controller("LoginControl", function($scope, $session, $state){
+		$scope.form = { "username": "", "password": "", "remember": 0 }; 
+		$scope.loggedIn = $session.isLoggedIn(); 
+		$scope.doLogin = function(){
+			$session.login({
+				"username": $scope.form.username, 
+				"password": $scope.form.password, 
+				"remember": $scope.form.remember
+			}).done(function success(res){
+				$state.transitionTo("home"); 
+			}).fail(function fail(res){
+				
+			}); 
+		}
+		$scope.doLogout = function(){
+			$session.logout().done(function(){
+				console.log("Logged out!"); 
+				$state.transitionTo("home"); 
+			}); 
+		}
+	}); 

@@ -29,23 +29,25 @@
 			</div>
 		</div>
 	</div>
-	<div class="container" role="main">
+	<div ui-view="content"></div>
+	<!--<div class="container" role="main">
 		<div class="row">
 			<luci-navbar></luci-navbar>
 		</div>
+		<div ui-view="page"></div>
+		
 		<div class="row">
 			<div class="col-md-3">
 				<luci-nav></luci-nav>
 			</div>
 			<div class="col-md-9">
-				<!-- View placeholder -->
 				<div ui-view="content"></div>
 				<div id="loading-indicator">
 					<div class='text'> Loading ... </div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="/bower_components/angular/angular.js"></script>
 	<script src="/bower_components/angular-ui/build/angular-ui.min.js"></script>
@@ -68,6 +70,7 @@
 	<script src="js/navigation.js"></script>
 	<script src="js/rpc.js"></script>
 	<script src="js/session.js"></script>
+	<script src="pages/login.js"></script>
 	<script src="pages/internet.js"></script>
 	<script src="pages/internet.dns.js"></script>
 	<script src="pages/internet.exposed_host.js"></script>
@@ -107,6 +110,9 @@
 	<script src="widgets/luci.nav.js"></script>
 	<script src="widgets/luci.progress.js"></script>
 	<script src="widgets/luci.table.js"></script>
+	<script src="widgets/luci.layout.single_column.js"></script>
+	<script src="widgets/luci.layout.with_sidebar.js"></script>
+	<script src="widgets/luci.layout.naked.js"></script>
 	<!-- ###---### -->
 </body>
 </html>
