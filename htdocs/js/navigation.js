@@ -73,9 +73,9 @@ angular.module("luci")
 					url: "/"+item.path, 
 					views: {
 						"content": {
-							//templateUrl: item.page, 
+							templateUrl: item.page, 
 							//template: 'template', 
-							templateProvider: function($q, $state, $templateFactory, $templateCache, $http) {
+							/*templateProvider: function($q, $state, $templateFactory, $templateCache, $http) {
 								//alert(lazyPromise); 
 								return lazyPromise; 
 							}, 
@@ -92,7 +92,7 @@ angular.module("luci")
 									});
 									return deferred.promise;
 								}
-							}
+							}*/
 						}
 					},
 						
