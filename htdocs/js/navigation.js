@@ -1,3 +1,25 @@
+/*
+ * juci - javascript universal client interface
+ *
+ * Project Author: Martin K. Schröder <mkschreder.uk@gmail.com>
+ * 
+ * Copyright (C) 2012-2013 Inteno Broadband Technology AB. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA
+ */
+ 
 
 // provides a service for managing all pages
 // pages register with this service, and menus can query it to get the navigation tree
@@ -60,46 +82,31 @@ angular.module("luci")
 			return a.index - b.index; 
 		}); 
 		return item; 
-	}
+	} 
 	this.register = function(item){
 		if(!item.path) return; 
 		item = this.insertLeaf(item.path, item); 
 		
+		
 		// now also register with the routing service 
-		if(item.page){
-			(function(item){
+		//if(item.page){
+		/*	(function(item){
 				var lazyPromise = null; 
 				$stateProvider.state(item.path.replace(".", "_"), {
 					url: "/"+item.path, 
 					views: {
 						"content": {
-							templateUrl: item.page, 
-							//template: 'template', 
-							/*templateProvider: function($q, $state, $templateFactory, $templateCache, $http) {
-								//alert(lazyPromise); 
-								return lazyPromise; 
-							}, 
-							resolve: {
-								load: function($q, $http, $state, $templateCache, $rootScope){
-									var deferred = $q.defer();
-									lazyPromise = deferred.promise; 
-									require([
-										'pages/overview',
-									], function () {
-										$http.get("pages/"+item.path+".html", {cache: $templateCache}).then(function(html){
-											deferred.resolve(html.data); 
-										});
-									});
-									return deferred.promise;
-								}
-							}*/
+							templateUrl: item.page || "/pages/default.html"
 						}
 					},
-						
+					onEnter: function($window){
+						// TODO: all these redirects seem to load page multiple times. 
+						if(item.redirect) $window.location.href = "#!"+item.redirect; 
+					},
 					luci_config: item
 				}); 
-			})(item); 
-		}
+			})(item); */
+		//}
 		//alert(JSON.stringify(data)); 
 		return data; 
 	}; 

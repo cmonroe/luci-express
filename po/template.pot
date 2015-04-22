@@ -4,14 +4,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: htdocs/views/about.html:2
-msgid "About"
+#: htdocs/pages/status.dsl.html:3
+msgid "DSL Status"
 msgstr ""
 
-#: htdocs/views/status.overview.html:42
-msgid "Free"
+#: htdocs/widgets/luci.navbar.html:29
+msgid "Theme"
 msgstr ""
 
-#: htdocs/views/about.html:3
-msgid "Test"
+#: htdocs/widgets/luci.login.html:3
+msgid "You are logged in!"
 msgstr ""

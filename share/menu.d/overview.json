@@ -2,7 +2,6 @@
     "overview": {
         "title": "Overview",
         "view": "overview",
-        "acls": [ "router" ],
         "index": 10
     }
 }
