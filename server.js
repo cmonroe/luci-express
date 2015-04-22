@@ -7,7 +7,7 @@ var request = require("request");
 var bodyParser = require('body-parser')
 
 var config = {
-	ubus_uri: "http://192.168.1.1/ubus" // <-- your router uri
+	ubus_uri: "" // <-- your router uri
 }; 
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -23,10 +23,8 @@ var rpc_calls = {
 		[
 			"share/menu.d/overview.json", 
 			"share/menu.d/settings.json",
-			"share/menu.d/phone.json",
 			"share/menu.d/internet.json",
 			"share/menu.d/status.json",
-			"share/menu.d/status.vodaphone.json",
 			"share/menu.d/wifi.json"
 		].map(function(file){
 			var obj = JSON.parse(fs.readFileSync(file)); 
@@ -53,12 +51,43 @@ app.post('/ubus', function(req, res) {
   
 	console.log("JSON_CALL (-> "+config.ubus_uri+"): "+JSON.stringify(data)); 
 	
+	function doLocalRPC(){
+		if (!err && data.jsonrpc !== '2.0') {
+			onError({
+				code: -32600,
+				message: 'Bad Request. JSON RPC version is invalid or missing',
+				data: null
+			}, 400);
+			return;
+		}
+		
+		//console.log("Call: "+data.method+" "+JSON.stringify(data.params)); 
+		var name = data.params[1]+"."+data.params[2]; 
+		if(name in rpc_calls){
+			rpc_calls[name](null, function(resp){
+				res.write(JSON.stringify({
+					jsonrpc: "2.0", 
+					result: [0, resp]
+				}));
+				
+				res.end(); 
+			}); 
+		} else {
+			console.log("Unknown RPC call "+name); 
+			res.end(); 
+		}
+	}
+	
   request({
     url: config.ubus_uri,
     method: "POST",
     json: true,   // <--Very important!!!
     body: data
 	}, function (error, response, body) {
+		if(error){ 
+			doLocalRPC(); 
+			return; 
+		}
 		var json = JSON.stringify(body); 
 		console.log("JSON_RESP: "+json); 
 		res.write(json); 
@@ -67,30 +96,7 @@ app.post('/ubus', function(req, res) {
 /*
 	console.log(JSON.stringify(data)); 
 	
-  if (!err && data.jsonrpc !== '2.0') {
-    onError({
-      code: -32600,
-      message: 'Bad Request. JSON RPC version is invalid or missing',
-      data: null
-    }, 400);
-    return;
-  }
-	
-	//console.log("Call: "+data.method+" "+JSON.stringify(data.params)); 
-	var name = data.params[1]+"."+data.params[2]; 
-	if(name in rpc_calls){
-		rpc_calls[name](null, function(resp){
-			res.write(JSON.stringify({
-				jsonrpc: "2.0", 
-				result: [0, resp]
-			}));
-			
-			res.end(); 
-		}); 
-	} else {
-		console.log("Unknown RPC call "+name); 
-		res.end(); 
-	}*/
+  */
 });
 
 var server = app.listen(3000, function () {
