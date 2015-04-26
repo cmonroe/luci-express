@@ -1,5 +1,6 @@
 {
 	"scripts": [
+		"widgets/theme_picker",
 		"widgets/luci.footer",
 		"widgets/luci.layout.naked",
 		"widgets/luci.layout.single_column",
@@ -8,7 +9,8 @@
 		"widgets/luci.nav",
 		"widgets/luci.navbar",
 		"widgets/luci.progress",
-		"widgets/luci.table"
+		"widgets/luci.table",
+		"widgets/luci.top_bar"
 	],
 	"pages": {
 		"overview": {
@@ -16,6 +18,9 @@
 		}, 
 		"login": {
 			"view": "pages/login"
+		}, 
+		"bootstrap": {
+			"view": "pages/bootstrap"
 		}
 	}
 }

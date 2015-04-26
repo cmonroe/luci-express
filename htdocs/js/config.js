@@ -39,11 +39,10 @@ angular.module("luci")
 				title: "Swedish"
 			}
 		},
-		themes: {
-			"default": "/themes/default/",
-			"red" : "/themes/inteno-red/",
-			"vodaphone" : "/themes/vodaphone/"
-		}, 
+		themes: [
+			"default", 
+			"inteno-red"
+		], 
 		plugins: [
 			"hello_world", 
 			"core", 
@@ -64,6 +63,11 @@ angular.module("luci")
 				"router.dslstats",
 				"router.info",
 				"router.clients", 
+				"uci.state", 
+				"uci.set", 
+				"uci.delete", 
+				"uci.commit", 
+				"uci.configs", 
 				"network.interface.status", 
 				"system.info"
 			]
