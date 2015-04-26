@@ -7,7 +7,7 @@ var request = require("request");
 var bodyParser = require('body-parser')
 
 var config = {
-	ubus_uri: "" // <-- your router uri
+	ubus_uri: "" //"http://192.168.1.1/ubus" // <-- your router uri
 }; 
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -20,25 +20,22 @@ app.use(express.static(__dirname + '/htdocs'));
 var rpc_calls = {
 	"luci2.ui.menu": function(params, next){
 		var menu = {}; 
-		[
-			"share/menu.d/overview.json", 
-			"share/menu.d/settings.json",
-			"share/menu.d/internet.json",
-			"share/menu.d/status.json",
-			"share/menu.d/wifi.json"
-		].map(function(file){
-			var obj = JSON.parse(fs.readFileSync(file)); 
-			Object.keys(obj).map(function(k){
-				menu[k] = obj[k]; 
-			});  
-		}); 
-		next({
-			menu: menu
+		// combine all menu files we have locally
+		fs.readdir("share/menu.d", function(err, files){
+			files.map(function(file){
+				var obj = JSON.parse(fs.readFileSync("share/menu.d/"+file)); 
+				Object.keys(obj).map(function(k){
+					menu[k] = obj[k]; 
+				});  
+			}); 
+			next({
+				menu: menu
+			}); 
 		}); 
 	}, 
 	"session.access": function(params, next){
 		next({
-			"access-group": [ "a", "b" ]
+			"access-group": [ "a", "b" ] // just bogus access groups
 		}); 
 	}
 }; 
