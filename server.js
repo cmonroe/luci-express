@@ -7,7 +7,7 @@ var request = require("request");
 var bodyParser = require('body-parser')
 
 var config = {
-	ubus_uri: "" //"http://192.168.1.1/ubus" // <-- your router uri
+	ubus_uri: "http://whitebox/ubus" // <-- your router uri
 }; 
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -75,14 +75,15 @@ app.post('/ubus', function(req, res) {
 		}
 	}
 	
-  request({
+  request({ 
     url: config.ubus_uri,
     method: "POST",
     json: true,   // <--Very important!!!
     body: data
 	}, function (error, response, body) {
 		if(error){ 
-			doLocalRPC(); 
+			console.log("ERROR: "+error); 
+			//doLocalRPC(); 
 			return; 
 		}
 		var json = JSON.stringify(body); 

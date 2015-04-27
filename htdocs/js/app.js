@@ -137,7 +137,13 @@ angular.module("luci", [
     });*/
 		var path = $location.path().replace("/", "").replace(".", "_");  
 		
-		$state.go("init", {"redirect": path}); 
+		$session.init().done(function(){
+			$state.go("init", {"redirect": path}); 
+		}).fail(function(){
+			console.log("Failed to verify session."); 
+			$state.go("init", {"redirect": "login"}); 
+			//$state.go("login"); 
+		}); 
 	})
 
 //window.app = angular.module("luci"); 
@@ -155,6 +161,16 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $templateCache, 
 	
 }); 
 */
+/*
+angular.module("luci").directive('inverted', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      ngModel.$parsers.push(function(val) { return !val; });
+      ngModel.$formatters.push(function(val) { return !val; });
+    }
+  };
+});*/
 
 $(document).ready(function(){
 	          
