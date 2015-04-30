@@ -4,7 +4,7 @@ $juci.module("wifi")
 	$scope.mainWifiEnabled = 1; 
 	$scope.wifiButtonEnabled = 1; 
 	$scope.guestWifiEnabled = 0; 
-	$scope.guest_wifi = { }; 
+	$scope.guest_wifi = {}; 
 	$scope.main_wifi = {}; 
 	
 	$scope.wifiPassword = "123123"; 
@@ -33,24 +33,27 @@ $juci.module("wifi")
 			}); 
 		}, function(){
 			$scope.info = null; 
-			$scope.$apply(); 
+			//$scope.$apply(); 
 		}); 
 	}
 	$scope.onGuestEnable = function(){
 		
 	}
 	$scope.onApply = function(){
-		console.log(JSON.stringify($scope.main_wifi)); 
-		console.log(JSON.stringify($scope.guest_wifi)); 
+		//console.log(JSON.stringify($scope.main_wifi)); 
+		//console.log(JSON.stringify($scope.guest_wifi)); 
 		async.series([
 			function(next){
-				$uci.set("wireless."+$scope.main_wifi[".name"], $scope.main_wifi).always(function(){next();}); 
+				$scope.main_wifi.commit().done(function(){
+					next(); 
+				}); 
+				//$uci.set("wireless."+$scope.main_wifi[".name"], $scope.main_wifi).always(function(){next();}); 
 			}, 
 			function(next){
 				$uci.set("wireless."+$scope.guest_wifi[".name"], $scope.guest_wifi).always(function(){next();}); 
 			}
 		], function(){
-			console.log("done"); 
+			console.log("saved wifi settings"); 
 			// done
 		}); 
 	}
@@ -64,6 +67,7 @@ $juci.module("wifi")
 		$scope.main_wifi = $scope.interfaces[0]; //$scope.interfaces.filter(function(x) { return x[".name"] == "main"; })[0] || {}; 
 		$scope.guest_wifi = $scope.interfaces[1]; //$scope.interfaces.filter(function(x) { return x[".name"] == "guest"; })[0] || {}; 
 		
+		console.log(JSON.stringify($scope.main_wifi)); 
 		//$scope.guestWifiEnabled = ($scope.guest_wifi && $scope.guest_wifi.up == '1'); 
 		$scope.$apply(); 
 	}); 
