@@ -10,8 +10,7 @@ $juci.module("core")
 		replace: true, 
 		require: "^ngModel"
 	 };  
-}).controller("uciWirelessInterfaceMacfilterEditController", function($scope, $rpc, $uci_ex, $hosts){
-	var $uci = $uci_ex; 
+}).controller("uciWirelessInterfaceMacfilterEditController", function($scope, $rpc, $uci, $hosts){
 	$scope.maclist = []; 
 	/*
 	// updates scratch model for the view

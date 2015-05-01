@@ -64,7 +64,8 @@ angular.module("luci")
 				"uci.add", 
 				"uci.delete", 
 				"uci.commit", 
-				"uci.rollback", 
+				"uci.rollback",
+				"uci.confirm", 
 				"uci.revert", 
 				"uci.configs"
 				// the rest is automatically retreived from session now!

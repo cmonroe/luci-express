@@ -127,8 +127,10 @@ angular.module("luci", [
 			luci_config: {}
 		}); 
 	})
-	.run(function($rootScope, $state, $session, gettextCatalog, $rpc, $config, $location, $navigation){
+	.run(function($rootScope, $state, $session, gettextCatalog, $rpc, $uci, $config, $location, $navigation){
 		$rootScope.config = $config; 
+		//window.rpc = $rpc; 
+		//window.uci = $uci; 
 		//$rootScope.theme_index = "html/init.html"; 
 		// set current language
 		//gettextCatalog.currentLanguage = "se"; 
