@@ -49,6 +49,7 @@ angular.module("luci")
 			"bss_max":		{ dvalue: 0, type: Number },
 			"instance":		{ dvalue: 0, type: Number },
 			"up":					{ dvalue: false, type: Boolean },
+			"closed":			{ dvalue: false, type: Boolean },
 			"disabled":		{ dvalue: false, type: Boolean },
 			"macmode":		{ dvalue: 1, type: Number, allow: [ 0, 1, 2 ] },
 			"macfilter":	{ dvalue: false, type: Boolean },

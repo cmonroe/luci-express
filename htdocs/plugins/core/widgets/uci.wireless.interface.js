@@ -15,6 +15,6 @@ $juci.module("core")
 		$scope.devices = $uci.wireless["@wifi-device"].map(function(x){
 			return x[".name"]; 
 		}); 
-		$scope.title = $scope.interface[".name"] + ".edit.title"; 
+		$scope.title = "wifi-iface.name="+$scope.interface[".name"]; 
 	}); 
 }); 

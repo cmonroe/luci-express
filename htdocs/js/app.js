@@ -133,8 +133,8 @@ angular.module("luci", [
 		//window.uci = $uci; 
 		//$rootScope.theme_index = "html/init.html"; 
 		// set current language
-		//gettextCatalog.currentLanguage = "se"; 
-		//gettextCatalog.debug = true;
+		gettextCatalog.currentLanguage = "se"; 
+		gettextCatalog.debug = true;
 		/*$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });*/

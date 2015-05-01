@@ -9,106 +9,338 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.7.5\n"
 
-#: htdocs/views/about.html:2
-msgid "About"
-msgstr "Om"
+msgid "Overview"
+msgstr "Översikt"
 
-#: htdocs/views/status.dsl.html:38
-msgid "Actual Data Rate"
-msgstr "Nuvarande hastighet"
+msgid "Phone"
+msgstr "Telefoni"
 
-#: htdocs/views/status.dsl.html:28
-msgid "Bit Rate"
-msgstr "Bithastighet"
+msgid "System"
+msgstr "System"
 
-#: htdocs/views/status.dsl.html:65
-msgid "CRC Errors"
-msgstr "CRC fel"
+msgid "Internet"
+msgstr "Internet"
 
-#: htdocs/views/status.dsl.html:76
-msgid "Cell Counter"
-msgstr "Cell räknare"
+msgid "WiFi"
+msgstr "WiFi"
 
-#: htdocs/views/status.dsl.html:21
-msgid "Configured"
-msgstr "Konfigurerad"
+msgid "Settings"
+msgstr "Inställningar"
 
-#: htdocs/views/status.dsl.html:22
-msgid "Current"
-msgstr "Nuvarande"
+msgid "Status"
+msgstr "Status"
 
-#: htdocs/views/status.dsl.html:2
-msgid "DSL Connection"
-msgstr "DSL uppkoppling"
+msgid "Theme"
+msgstr "Utseende"
 
-#: htdocs/views/status.dsl.html:9
-msgid "DSL Mode"
-msgstr "DSL Mode"
+msgid "Network"
+msgstr "Nätverk"
 
-#: htdocs/views/status.dsl.html:16
-msgid "DSL Status Information"
-msgstr "DSL Status"
+# wifi
+msgid "Setup"
+msgstr "Inställningar"
 
-#: htdocs/views/status.dsl.html:33 htdocs/views/status.dsl.html:48
-#: htdocs/views/status.dsl.html:60
-msgid "Downstream"
-msgstr "Ner"
+msgid "General"
+msgstr "Inställningar"
 
-#: htdocs/views/status.dsl.html:55
-msgid "Error Counter"
-msgstr "Fel"
+msgid "Schedule"
+msgstr "Schemaläggning"
 
-#: htdocs/views/status.dsl.html:64
-msgid "FEC Corrections"
-msgstr "FEC rättelser"
+msgid "WPS"
+msgstr "WPS"
 
-#: htdocs/views/status.overview.html:42
-msgid "Free"
-msgstr "Tillgänglig"
+#: htdocs/plugins/wifi/pages/wifi.mac_filter.html:4
+msgid "MAC Filter"
+msgstr "MAC Filter"
 
-#: htdocs/views/status.dsl.html:59
-msgid "Indicator Name"
-msgstr "Indikatornamn"
+msgid "wifi.general.info"
+msgstr "Generell information "
 
-#: htdocs/views/status.dsl.html:25
-msgid "Line Status"
-msgstr "Uppkopplingsstatus"
+msgid "wifi.macfilter.info"
+msgstr ""
+"Med hjälp av MAC filter kan du begränsa åtkomst till nätverket på "
+"hårdvarunivå. "
 
-#: htdocs/views/status.dsl.html:26
-msgid "Link Type"
-msgstr "Uppkopplingstyp"
+msgid "Enable WiFi On/Off button on EasyBox"
+msgstr "On/Off knappen på din EasyBox"
 
-#: htdocs/views/status.dsl.html:53
-msgid "Loop Attenuation"
-msgstr "Loop attenuation"
+msgid "Wifi Network"
+msgstr "Wifi Nätverk"
 
-#: htdocs/views/status.dsl.html:43
-msgid "Operating Data"
-msgstr "Operationsdata"
+msgid "wifi.schedule.info"
+msgstr ""
+"Med schemaläggninga kan du enkelt schemalägga när din wifi är tillgänglig. "
 
-#: htdocs/views/status.dsl.html:73
-msgid "Received Cells"
-msgstr "Mottagna cells"
+msgid "WPS Function"
+msgstr "WPS Funktion"
 
-#: htdocs/views/status.dsl.html:52
-msgid "SNR Margin"
-msgstr "SNR tolerans"
+msgid "wifi.wps.info"
+msgstr "Med hjälp av WPS kan du enkelt autentisera med ditt wifi nätverk. "
 
-#: htdocs/views/status.dsl.html:67
-msgid "Statistics"
-msgstr "Statistik"
+msgid "MAC Filtering"
+msgstr "MAC-filtrering "
 
-#: htdocs/views/about.html:3
-msgid "Test"
-msgstr "Jag testar"
+msgid "Access for listed devices"
+msgstr "Åtkomst för listade enheter"
 
-#: htdocs/views/status.dsl.html:72
-msgid "Transmitted Cells"
-msgstr "Celler sänt"
+msgid "Currently added devices"
+msgstr "Tilllagda enheter"
 
-#: htdocs/views/status.dsl.html:34 htdocs/views/status.dsl.html:49
-#: htdocs/views/status.dsl.html:61
-msgid "Upstream"
-msgstr "Upp"
+msgid "Add currently connected hosts to the list"
+msgstr "Lägg till anslutna enheter"
+
+msgid "Wifi Mode"
+msgstr "WiFi typ"
+
+msgid "Bandwidth"
+msgstr "Bandbredd"
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "MAC filter"
+msgstr "MAC Filter"
+
+msgid "Apply"
+msgstr "Verkställ"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: htdocs/plugins/router/pages/internet.exposed_host.html:14
+msgid ""
+"<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></"
+"span> Warning: By using the exposed host function you bypass the firewall of "
+"your {{config.friendly_name}}. Please make sure that your computer is "
+"protected against attacks from Internet. The following ports will not be "
+"forwarded: {{ nonforwardedPorts || 'None'}}."
+msgstr ""
+
+#: htdocs/plugins/core/widgets/uci.wireless.device.edit.html:12
+msgid "Choose Bandwidth"
+msgstr "Välj bandbredd"
+
+#: htdocs/plugins/core/widgets/uci.wireless.device.edit.html:18
+msgid "Choose Channel"
+msgstr "Välj kanal"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:11
+msgid "Choose Device"
+msgstr "Välj enhet"
+
+#: htdocs/plugins/core/widgets/uci.wireless.device.edit.html:6
+msgid "Choose Mode"
+msgstr "Välj inställning"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:17
+msgid "Choose Protection"
+msgstr "Välj säkerhet"
+
+#: htdocs/plugins/router/pages/status.dsl.html:3
+msgid "DSL Status"
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.exposed_host.html:3
+msgid "Exposed Host"
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.exposed_host.html:7
+msgid "Exposed Host Function"
+msgstr ""
+
+#: htdocs/plugins/wifi/pages/wifi.general.html:5
+msgid "General WiFi Settings"
+msgstr "Generella Inställningar"
+
+#: htdocs/plugins/router/pages/internet.exposed_host.html:4
+msgid ""
+"If you have a local network device that cannot run an Internet application "
+"properly behind the firewall, you can allow unrestricted Internet access to "
+"the network device (Exposed Host)."
+msgstr ""
+
+#: htdocs/plugins/router/pages/settings.uci.html:16
+msgid "Loading"
+msgstr ""
+
+#: htdocs/html/default.html:2
+msgid "Loading..."
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.port_mapping.html:6
+msgid "Local IP"
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.port_mapping.html:6
+msgid "Local port"
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.port_mapping.html:3
+msgid "Port Mapping"
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.port_mapping.html:4
+msgid ""
+"Port mapping allows remote computers to connect to a specific device within "
+"your private network."
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.port_mapping.html:6
+msgid "Protocol"
+msgstr ""
+
+#: htdocs/plugins/router/pages/internet.port_mapping.html:6
+msgid "Public Port"
+msgstr ""
+
+#: htdocs/html/404.html:2
+msgid "The page you were trying to access was not found!"
+msgstr ""
+
+#: htdocs/plugins/core/widgets/luci.navbar.html:4
+msgid "Toggle navigation"
+msgstr ""
+
+#: htdocs/plugins/core/widgets/luci.login.html:3
+msgid "You are logged in!"
+msgstr "Du är inloggad!"
+
+msgid "wifi-iface.wifi-iface.ssid"
+msgstr ""
+
+msgid "wifi-iface.device"
+msgstr "Radio"
+
+msgid "wifi-iface.network"
+msgstr "Nätverk"
+
+msgid "wifi-iface.mode"
+msgstr ""
+
+msgid "wifi-iface.ssid"
+msgstr "WiFi Namn (SSID)"
+
+msgid "wifi-iface.encryption"
+msgstr "Säkerhet"
+
+msgid "wifi-iface.cipher"
+msgstr "Kryptering"
+
+msgid "wifi-iface.key"
+msgstr "Krypteringsnyckel"
+
+msgid "wifi-iface.gtk_rekey"
+msgstr ""
+
+msgid "wifi-iface.wps_pbc"
+msgstr ""
+
+msgid "wifi-iface.wmf_bss_enable"
+msgstr ""
+
+msgid "wifi-iface.bss_max"
+msgstr ""
+
+msgid "wifi-iface.instance"
+msgstr ""
+
+msgid "wifi-iface.up"
+msgstr ""
+
+msgid "wifi-iface.closed"
+msgstr "Öppet nätverk"
+
+msgid "wifi-iface.disabled"
+msgstr ""
+
+msgid "wifi-iface.macmode"
+msgstr ""
+
+msgid "wifi-iface.macfilter"
+msgstr "MAC Filter"
+
+msgid "wifi-iface.maclist"
+msgstr ""
+
+msgid "interface.macmode.allow"
+msgstr "Tillåt"
+
+msgid "interface.macmode.deny"
+msgstr "Neka"
+
+#~ msgid "About"
+#~ msgstr "Om"
+
+#~ msgid "Actual Data Rate"
+#~ msgstr "Nuvarande hastighet"
+
+#~ msgid "Bit Rate"
+#~ msgstr "Bithastighet"
+
+#~ msgid "CRC Errors"
+#~ msgstr "CRC fel"
+
+#~ msgid "Cell Counter"
+#~ msgstr "Cell räknare"
+
+#~ msgid "Configured"
+#~ msgstr "Konfigurerad"
+
+#~ msgid "Current"
+#~ msgstr "Nuvarande"
+
+#~ msgid "DSL Connection"
+#~ msgstr "DSL uppkoppling"
+
+#~ msgid "DSL Mode"
+#~ msgstr "DSL Mode"
+
+#~ msgid "DSL Status Information"
+#~ msgstr "DSL Status"
+
+#~ msgid "Downstream"
+#~ msgstr "Ner"
+
+#~ msgid "Error Counter"
+#~ msgstr "Fel"
+
+#~ msgid "FEC Corrections"
+#~ msgstr "FEC rättelser"
+
+#~ msgid "Free"
+#~ msgstr "Tillgänglig"
+
+#~ msgid "Indicator Name"
+#~ msgstr "Indikatornamn"
+
+#~ msgid "Line Status"
+#~ msgstr "Uppkopplingsstatus"
+
+#~ msgid "Link Type"
+#~ msgstr "Uppkopplingstyp"
+
+#~ msgid "Loop Attenuation"
+#~ msgstr "Loop attenuation"
+
+#~ msgid "Operating Data"
+#~ msgstr "Operationsdata"
+
+#~ msgid "Received Cells"
+#~ msgstr "Mottagna cells"
+
+#~ msgid "SNR Margin"
+#~ msgstr "SNR tolerans"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistik"
+
+#~ msgid "Test"
+#~ msgstr "Jag testar"
+
+#~ msgid "Transmitted Cells"
+#~ msgstr "Celler sänt"
+
+#~ msgid "Upstream"
+#~ msgstr "Upp"

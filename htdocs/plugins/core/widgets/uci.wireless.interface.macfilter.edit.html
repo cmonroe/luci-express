@@ -13,7 +13,7 @@
 		<luci-config-lines>
 			<luci-config-line title="'Access for listed devices'">
 				<div class="btn-group">
-					<button ng-repeat="mode in [[1,'allow'], [2, 'deny']]" class="btn btn-default" ng-model="interface.macmode.value" btn-radio="mode[0]">interface.macmode.{{mode[1]}}</button>
+					<button ng-repeat="mode in [[1,'allow'], [2, 'deny']]" class="btn btn-default" ng-model="interface.macmode.value" btn-radio="mode[0]">{{ 'interface.macmode.'+mode[1] | translate}}</button>
 				</div>
 			</luci-config-line>
 			<luci-config-line title="'Currently added devices'">
