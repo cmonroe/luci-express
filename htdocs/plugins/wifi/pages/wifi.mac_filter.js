@@ -1,8 +1,32 @@
 $juci.module("wifi")
-.controller("WifiMacFilterPageCtrl", function($scope, $uci, $hosts){
+.controller("WifiMacFilterPageCtrl", function($scope, $uci, $hosts, $uci_ex){
 	$scope.guest_wifi = { }; 
 	$scope.main_wifi = {}; 
+	window.uci = $uci_ex; 
+	$scope.uci = $uci_ex; 
 	
+	$uci_ex.sync(["wireless", "hosts"]).done(function(){
+		console.log("synced wireless config"); 
+		$scope.interfaces = $uci_ex.wireless['@wifi-iface']; 
+		$scope.$apply(); 
+	}).fail(function(err){
+		console.log("failed to sync config: "+err); 
+	}); 
+	
+	
+	$scope.onApply = function(){
+		$scope.busy = 1; 
+		$uci_ex.save().done(function(){
+			console.log("Saved wifi config!"); 
+		}).fail(function(){
+			console.log("Could not save wifi config!"); 
+		}).always(function(){
+			$scope.busy = 0; 
+			$scope.$apply(); 
+		}); 
+	}
+	
+	return; 
 	function load(){
 		$uci.show("wireless").done(function(interfaces){
 			var list = Object.keys(interfaces)

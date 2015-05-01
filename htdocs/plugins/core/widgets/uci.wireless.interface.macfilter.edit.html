@@ -2,28 +2,28 @@
 	<luci-config-section>
 		<luci-config-lines>
 			<luci-config-line title="'MAC Filtering'">
-				<switch ng-model="filterEnabled" class="green" ng-change="onFilterEnable"></switch>
+				<switch ng-model="interface.macfilter.value" class="green" ng-change="onFilterEnable"></switch>
 			</luci-config-line>
 		</luci-config-lines>
 	</luci-config-section>
-	<luci-config-section ng-show="filterEnabled">
+	<luci-config-section ng-show="interface.macfilter.value">
 		<!--<div class="alert alert-danger">
 			<div ng-message="pattern" translate><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>You must enter a valid MAC address!</div>
 		</div>-->
 		<luci-config-lines>
 			<luci-config-line title="'Access for listed devices'">
 				<div class="btn-group">
-					<button ng-repeat="mode in [[1,'allow'], [2, 'deny']]" class="btn btn-default" ng-model="interface.macmode" btn-radio="mode[0]">interface.macmode.{{mode[1]}}</button>
+					<button ng-repeat="mode in [[1,'allow'], [2, 'deny']]" class="btn btn-default" ng-model="interface.macmode.value" btn-radio="mode[0]">interface.macmode.{{mode[1]}}</button>
 				</div>
 			</luci-config-line>
 			<luci-config-line title="'Currently added devices'">
 				<table class="table">
-					<tr ng-repeat="host in maclist">
+					<tr ng-repeat="mac in maclist">
 						<td>
-							<input type="text" class="form-control" ng-model="host.hostname"/>
+							<input type="text" class="form-control" ng-model="mac.hostname" ng-blur="rebuildMacList()"/>
 						</td>
 						<td>
-							<input type="text" class="form-control" ng-model="host.macaddr.value" placeholder="xx:xx:xx:xx:xx:xx" /><!-- ng-pattern="/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/"-->
+							<input type="text" class="form-control" ng-model="mac.macaddr" ng-blur="rebuildMacList()" placeholder="xx:xx:xx:xx:xx:xx" /><!-- ng-pattern="/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/"-->
 						</td>
 						<td>
 							<button class="btn btn-default" ng-click="onDeleteHost(host)"><i class="fa fa-trash-o"></i></button>
