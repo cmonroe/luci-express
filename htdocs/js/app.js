@@ -269,7 +269,7 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $localStorage, $
 	}]; 
 	
 	$config.mode = $localStorage.getItem("mode") || "basic"; 
-	$config.theme = $localStorage.getItem("theme") || "vodaphone"; // TODO: change to default inteno
+	$config.theme = $localStorage.getItem("theme") || "default"; // TODO: change to default inteno
 	
 	$scope.theme_index = "themes/"+$config.theme+"/index.html"; 
 	
