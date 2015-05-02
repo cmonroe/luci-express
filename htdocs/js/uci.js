@@ -3,11 +3,17 @@ angular.module("luci")
 	$rpc = $rpcProvider.$get(); 
 	
 	var section_types = {
+		"easybox-settings": {
+			"usb_port": 		{ dvalue: true, type: Boolean }, 
+			"status_led": 	{ dvalue: true, type: Boolean }, 
+			"power_led": 		{ dvalue: true, type: Boolean }, 
+			"power_led_br":	{ dvalue: 100, type: Number }
+		}, 
 		"wifi-settings": {
-			"disabled": 	{ dvalue: false, type: Boolean }, 
+			"disabled":			{ dvalue: false, type: Boolean }, 
 			"button_enabled": { dvalue: false, type: Boolean }, 
-			"scheduling": { dvalue: false, type: Boolean },
-			"wps": { dvalue: false, type: Boolean }
+			"scheduling": 	{ dvalue: false, type: Boolean },
+			"wps":					{ dvalue: false, type: Boolean }
 		}, 
 		"wifi-device": {
 			"type": 			{ dvalue: "", type: String },

@@ -33,10 +33,13 @@ $juci.module("core")
 			controllerAs: "ctrl"
 		}; 
 	})
-	.controller("LoginControl", function($scope, $session, $state, $window, $location){
+	.controller("LoginControl", function($scope, $session, $state, $window, $location, gettext){
 		$scope.form = { "username": "", "password": "", "remember": 0 }; 
 		$scope.loggedIn = $session.isLoggedIn(); 
+		$scope.errors = []; 
 		$scope.doLogin = function(){
+			$scope.errors = []; 
+			$scope.$apply(); 
 			$session.login({
 				"username": $scope.form.username, 
 				"password": $scope.form.password, 
@@ -45,7 +48,9 @@ $juci.module("core")
 				//$state.go("home", {}, {reload: true});
 				$window.location.href="/"; 
 			}).fail(function fail(res){
-				
+				$scope.errors.push(res); 
+				$scope.errors.push(gettext("Please enter correct username and password!"));
+				$scope.$apply(); 
 			}); 
 		}
 		$scope.doLogout = function(){

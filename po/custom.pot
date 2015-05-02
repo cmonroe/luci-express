@@ -87,6 +87,18 @@ msgstr ""
 msgid "NAT"
 msgstr ""
 
+# phone
+msgid "Call Log"
+msgstr ""
+msgid "Number Blocking"
+msgstr ""
+msgid "Ringing Schedule"
+msgstr ""
+msgid "Numbers"
+msgstr ""
+msgid "Speed Dialing"
+msgstr ""
+
 # settings 
 msgid "EasyBox Password"
 msgstr ""

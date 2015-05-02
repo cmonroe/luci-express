@@ -56,7 +56,20 @@ $juci.module("core")
 		template: '<div class="row"><div class="btn-toolbar pull-right" >'+
 			'<button class="btn btn-lg btn-primary" ng-click="onApply()" ng-disabled="busy"><i class="fa fa-spinner fa-spin" ng-show="busy"/>{{ "Apply"| translate }}</button><button class="btn btn-lg btn-default" ng-click="onCancel()">{{ "Cancel" | translate }}</button>'+
 			'</div></div>', 
-		replace: true
+		replace: true, 
+		controller: "luciConfigApplyController"
 	 }; 
+}).controller("luciConfigApplyController", function($scope, $uci){
+	$scope.onApply = function(){
+		$scope.busy = 1; 
+		$uci.save().done(function(){
+			console.log("Saved uci configuration!"); 
+		}).fail(function(){
+			console.error("Could not save uci configuration!"); 
+		}).always(function(){
+			$scope.busy = 0; 
+			$scope.$apply(); 
+		}); 
+	}
 }); 
 
