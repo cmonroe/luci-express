@@ -1,7 +1,7 @@
 <div>
 	<luci-config-section>
 		<luci-config-lines>
-			<luci-config-line title="'MAC Filtering'">
+			<luci-config-line title="{{'MAC Filtering'|translate}}">
 				<switch ng-model="interface.macfilter.value" class="green" ng-change="onFilterEnable"></switch>
 			</luci-config-line>
 		</luci-config-lines>
@@ -11,12 +11,12 @@
 			<div ng-message="pattern" translate><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>You must enter a valid MAC address!</div>
 		</div>-->
 		<luci-config-lines>
-			<luci-config-line title="'Access for listed devices'">
+			<luci-config-line title="{{'Access for listed devices'|translate}}">
 				<div class="btn-group">
 					<button ng-repeat="mode in [[1,'allow'], [2, 'deny']]" class="btn btn-default" ng-model="interface.macmode.value" btn-radio="mode[0]">{{ 'interface.macmode.'+mode[1] | translate}}</button>
 				</div>
 			</luci-config-line>
-			<luci-config-line title="'Currently added devices'">
+			<luci-config-line title="{{'Currently added devices'|translate}}">
 				<table class="table">
 					<tr ng-repeat="mac in maclist">
 						<td>
@@ -38,12 +38,12 @@
 					</tr>
 				</table>
 			</luci-config-line>
-			<luci-config-line title="'Add currently connected hosts to the list'">
+			<luci-config-line title="{{'Add currently connected hosts to the list'|translate}}">
 				<button class="btn btn-default" ng-click="onAddClients()"><i class="fa fa-plus"></i></button>
 			</luci-config-line>
 		</luci-config-lines>
 	</luci-config-section>
-	<modal title="'Add clients to MAC filtering list'" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Save">
+	<modal title="{{'Add clients to MAC filtering list'|translate}}" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="{{'Cancel'|translate}}" accept-label="{{'Save'|translate}}">
 		<luci-config>
 			<luci-config-section>
 				

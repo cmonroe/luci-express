@@ -40,7 +40,7 @@ $juci.module("core")
 			scope: {
 				data: "=", 
 				columns: "=", 
-				title: "=", 
+				title: "@", 
 				noequalize: "="
 			}, 
 			templateUrl: plugin_root+"/widgets/luci.table.html", 

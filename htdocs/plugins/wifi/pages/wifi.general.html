@@ -5,10 +5,10 @@
 			<luci-config-heading>{{ 'General WiFi Settings' | translate }}</luci-config-heading>
 			<luci-config-info>{{ 'wifi.general.info' | translate }}</luci-config-info>
 			<luci-config-lines>
-				<luci-config-line title="'Wifi Network'">
+				<luci-config-line title="{{'Wifi Network'|translate}}">
 					<switch ng-model="settings.disabled.value" class="green" inverted></switch>
 				</luci-config-line>
-				<luci-config-line title="'Enable WiFi On/Off button on EasyBox'">
+				<luci-config-line title="{{'Enable WiFi On/Off button on EasyBox'|translate}}">
 					<switch ng-model="settings.button_enabled.value" class="green"></switch>
 				</luci-config-line>
 			</luci-config-lines>

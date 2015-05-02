@@ -18,7 +18,7 @@ $juci.module("core")
 .directive("luciConfigInfo", function(){
 	var plugin_root = $juci.module("core").plugin_root; 
 	return {
-		template: '<p class="luci-config-info" ng-transclude translate></p>', 
+		template: '<p class="luci-config-info" ng-transclude></p>', 
 		replace: true, 
 		transclude: true
 	 };  
@@ -26,7 +26,7 @@ $juci.module("core")
 .directive("luciConfigHeading", function(){
 	var plugin_root = $juci.module("core").plugin_root; 
 	return {
-		template: '<h2 ng-transclude translate></h2>', 
+		template: '<h2 ng-transclude></h2>', 
 		replace: true, 
 		transclude: true
 	 };  
@@ -42,10 +42,10 @@ $juci.module("core")
 .directive("luciConfigLine", function(){
 	var plugin_root = $juci.module("core").plugin_root; 
 	return {
-		template: '<tr><td class="col-xs-6"><label style="font-size: 1.2em">{{title | translate}}</label></td><td class="col-xs-6"><div class="btn-toolbar pull-right" ng-transclude></div></td></tr>', 
+		template: '<tr><td class="col-xs-6"><label style="font-size: 1.2em">{{title}}</label></td><td class="col-xs-6"><div class="pull-right" ng-transclude></div></td></tr>', 
 		replace: true, 
 		scope: {
-			title: "="
+			title: "@"
 		}, 
 		transclude: true
 	 };  

@@ -10,7 +10,8 @@ $juci.module("core")
 		replace: true, 
 		require: "^ngModel"
 	 };  
-}).controller("WifiInterfaceController", function($scope, $uci){
+}).controller("WifiInterfaceController", function($scope, $uci, gettext){
+	$scope.gettext = gettext; 
 	$scope.$watch("interface", function(value){
 		$scope.devices = $uci.wireless["@wifi-device"].map(function(x){
 			return x[".name"]; 

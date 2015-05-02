@@ -4,7 +4,12 @@ module.exports = function(grunt){
 		nggettext_extract: {
 			pot: {
 				files: {
-					'po/template.pot': ['**/*.html', 'js/*.js']
+					'po/template.pot': [
+						'js/*.js',
+						'htdocs/plugins/**/*.html', 
+						'htdocs/plugins/**/*.js', 
+						'htdocs/themes/**/*.html', 
+						'htdocs/themes/**/*.js']
 				}
 			}
 		}, 
@@ -16,4 +21,5 @@ module.exports = function(grunt){
 			}
 		}
 	}); 
+	     grunt.registerTask('default', ['nggettext_extract', 'nggettext_compile']);
 }

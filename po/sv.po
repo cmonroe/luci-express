@@ -39,15 +39,18 @@ msgid "Network"
 msgstr "Nätverk"
 
 # wifi
+#: htdocs/plugins/wifi/pages/wifi.general.html:17
 msgid "Setup"
 msgstr "Inställningar"
 
 msgid "General"
 msgstr "Inställningar"
 
+#: htdocs/plugins/wifi/pages/wifi.schedule.html:4
 msgid "Schedule"
 msgstr "Schemaläggning"
 
+#: htdocs/plugins/wifi/pages/wifi.wps.html:5
 msgid "WPS"
 msgstr "WPS"
 
@@ -63,9 +66,11 @@ msgstr ""
 "Med hjälp av MAC filter kan du begränsa åtkomst till nätverket på "
 "hårdvarunivå. "
 
+#: htdocs/plugins/wifi/pages/wifi.general.html:11
 msgid "Enable WiFi On/Off button on EasyBox"
 msgstr "On/Off knappen på din EasyBox"
 
+#: htdocs/plugins/wifi/pages/wifi.general.html:8
 msgid "Wifi Network"
 msgstr "Wifi Nätverk"
 
@@ -73,30 +78,38 @@ msgid "wifi.schedule.info"
 msgstr ""
 "Med schemaläggninga kan du enkelt schemalägga när din wifi är tillgänglig. "
 
+#: htdocs/plugins/wifi/pages/wifi.wps.html:8
 msgid "WPS Function"
 msgstr "WPS Funktion"
 
 msgid "wifi.wps.info"
 msgstr "Med hjälp av WPS kan du enkelt autentisera med ditt wifi nätverk. "
 
+#: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:4
 msgid "MAC Filtering"
 msgstr "MAC-filtrering "
 
+#: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:14
 msgid "Access for listed devices"
 msgstr "Åtkomst för listade enheter"
 
+#: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:19
 msgid "Currently added devices"
 msgstr "Tilllagda enheter"
 
+#: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:41
 msgid "Add currently connected hosts to the list"
 msgstr "Lägg till anslutna enheter"
 
+#: htdocs/plugins/core/widgets/uci.wireless.device.edit.html:4
 msgid "Wifi Mode"
 msgstr "WiFi typ"
 
+#: htdocs/plugins/core/widgets/uci.wireless.device.edit.html:10
 msgid "Bandwidth"
 msgstr "Bandbredd"
 
+#: htdocs/plugins/core/widgets/uci.wireless.device.edit.html:16
 msgid "Channel"
 msgstr "Kanal"
 
@@ -106,8 +119,58 @@ msgstr "MAC Filter"
 msgid "Apply"
 msgstr "Verkställ"
 
+#: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:46
 msgid "Cancel"
 msgstr "Avbryt"
+
+# internet
+msgid "Firewall"
+msgstr "Brandvägg"
+
+msgid "DSN"
+msgstr "DSN"
+
+# status
+msgid "DSL"
+msgstr "DSL"
+
+#: htdocs/plugins/router/pages/status.overview.js:59
+msgid "Voice"
+msgstr "Telefoni"
+
+msgid "Vodaphone TV"
+msgstr "Vodaphone TV"
+
+msgid "Diagnostics"
+msgstr "Diagnostik"
+
+msgid "Events"
+msgstr "Händelser"
+
+msgid "Restart"
+msgstr "Starta om"
+
+msgid "About"
+msgstr "Om"
+
+msgid "NAT"
+msgstr "NAT"
+
+# settings
+msgid "EasyBox Password"
+msgstr "EasyBox Lösenord"
+
+msgid "Firmware Upgrade"
+msgstr "Uppgradering"
+
+msgid "Energy Settings"
+msgstr "Energi-inställningar"
+
+msgid "Configuration"
+msgstr "Konfiguration"
+
+msgid "Advanced"
+msgstr "Avancerat"
 
 #: htdocs/plugins/router/pages/internet.exposed_host.html:14
 msgid ""
@@ -118,6 +181,34 @@ msgid ""
 "forwarded: {{ nonforwardedPorts || 'None'}}."
 msgstr ""
 
+#: htdocs/plugins/router/pages/status.overview.js:57
+msgid "ADSL"
+msgstr "ADSL"
+
+#: htdocs/plugins/router/pages/status.overview.js:74
+msgid "Active Connections"
+msgstr "Aktiva uppkopplingar"
+
+#: htdocs/plugins/router/pages/status.overview.html:20
+msgid "Active Stations"
+msgstr "Aktiva klienter"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:46
+msgid "Add clients to MAC filtering list"
+msgstr "Lägg till klienter till filter-listan"
+
+#: htdocs/plugins/core/widgets/luci.top_bar.html:13
+msgid "Basic"
+msgstr "Bas"
+
+#: htdocs/plugins/core/widgets/luci.top_bar.js:14
+msgid "Basic Mode"
+msgstr "Basic Mode"
+
+#: htdocs/plugins/router/pages/status.overview.js:66
+msgid "Buffered"
+msgstr "Buffrad"
+
 #: htdocs/plugins/core/widgets/uci.wireless.device.edit.html:12
 msgid "Choose Bandwidth"
 msgstr "Välj bandbredd"
@@ -126,7 +217,7 @@ msgstr "Välj bandbredd"
 msgid "Choose Channel"
 msgstr "Välj kanal"
 
-#: htdocs/plugins/core/widgets/uci.wireless.interface.html:11
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:15
 msgid "Choose Device"
 msgstr "Välj enhet"
 
@@ -134,25 +225,63 @@ msgstr "Välj enhet"
 msgid "Choose Mode"
 msgstr "Välj inställning"
 
-#: htdocs/plugins/core/widgets/uci.wireless.interface.html:17
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:21
 msgid "Choose Protection"
 msgstr "Välj säkerhet"
 
+#: htdocs/plugins/router/pages/status.overview.html:14
+msgid "Connections"
+msgstr "Uppkopplingar"
+
+#: htdocs/plugins/router/pages/status.overview.html:17
+msgid "DHCP Leases"
+msgstr "DHCP Leasar"
+
 #: htdocs/plugins/router/pages/status.dsl.html:3
 msgid "DSL Status"
-msgstr ""
+msgstr "DSL Status"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:27
+msgid "Display Characters"
+msgstr "Visa tecken"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:4
+msgid "Enabled"
+msgstr "Aktiv"
+
+#: htdocs/plugins/router/pages/status.overview.js:61
+msgid "Ethernet Ports"
+msgstr "Ethernet portar"
+
+#: htdocs/plugins/core/widgets/luci.top_bar.js:15
+msgid "Expert Mode"
+msgstr "Expert"
 
 #: htdocs/plugins/router/pages/internet.exposed_host.html:3
 msgid "Exposed Host"
-msgstr ""
+msgstr "Öppet klient"
 
 #: htdocs/plugins/router/pages/internet.exposed_host.html:7
 msgid "Exposed Host Function"
-msgstr ""
+msgstr "Aktivera öppen klient"
+
+#: htdocs/plugins/router/pages/status.overview.js:49
+msgid "Firmware Version"
+msgstr "Firmware version"
 
 #: htdocs/plugins/wifi/pages/wifi.general.html:5
 msgid "General WiFi Settings"
 msgstr "Generella Inställningar"
+
+#: htdocs/plugins/router/pages/status.overview.js:22
+#: htdocs/plugins/router/pages/status.overview.js:47
+msgid "Hostname"
+msgstr "Datornamn"
+
+#: htdocs/plugins/router/pages/status.overview.js:22
+#: htdocs/plugins/router/pages/status.overview.js:28
+msgid "IPv4-Address"
+msgstr "IPv4-Adress"
 
 #: htdocs/plugins/router/pages/internet.exposed_host.html:4
 msgid ""
@@ -160,76 +289,209 @@ msgid ""
 "properly behind the firewall, you can allow unrestricted Internet access to "
 "the network device (Exposed Host)."
 msgstr ""
+"Om du har en maskin som du vill göra tillgänglig från internet så kan du "
+"använda denna funktion för att vidarekoppla samtliga uppkopplingar till "
+"denna maskin (DMZ)"
+
+#: htdocs/plugins/router/pages/status.overview.js:50
+msgid "Kernel Version"
+msgstr "Kärnans version"
+
+#: htdocs/plugins/router/pages/status.overview.js:22
+msgid "Leasetime remaining"
+msgstr "Återstående lease-tid"
+
+#: htdocs/plugins/router/pages/status.overview.js:53
+msgid "Load Average"
+msgstr "Genomsnittsbelastning"
 
 #: htdocs/plugins/router/pages/settings.uci.html:16
 msgid "Loading"
-msgstr ""
-
-#: htdocs/html/default.html:2
-msgid "Loading..."
-msgstr ""
+msgstr "Laddar"
 
 #: htdocs/plugins/router/pages/internet.port_mapping.html:6
 msgid "Local IP"
-msgstr ""
+msgstr "Lokalt IP"
+
+#: htdocs/plugins/router/pages/status.overview.js:51
+msgid "Local Time"
+msgstr "Lokal tid"
 
 #: htdocs/plugins/router/pages/internet.port_mapping.html:6
 msgid "Local port"
-msgstr ""
+msgstr "Lokal port"
+
+#: htdocs/plugins/core/widgets/luci.top_bar.js:16
+msgid "Log out"
+msgstr "Logga ut"
+
+#: htdocs/plugins/router/pages/status.overview.js:28
+msgid "MAC address"
+msgstr "MAC-Adress"
+
+#: htdocs/plugins/router/pages/status.overview.js:22
+msgid "MAC-Address"
+msgstr "MAC-Adress"
+
+#: htdocs/plugins/router/pages/status.overview.html:8
+msgid "Memory"
+msgstr "Minne"
+
+#: htdocs/plugins/router/pages/status.overview.js:48
+msgid "Model"
+msgstr "Modell"
+
+#: htdocs/plugins/router/pages/status.overview.js:24
+#: htdocs/plugins/router/pages/status.overview.js:88
+msgid "No active leases"
+msgstr "Inga aktiva leasar"
+
+#: htdocs/plugins/router/pages/status.overview.js:101
+msgid "No active stations"
+msgstr "Inga aktiva klienter"
+
+#: htdocs/plugins/router/pages/status.overview.js:28
+msgid "Noise"
+msgstr "Brus"
 
 #: htdocs/plugins/router/pages/internet.port_mapping.html:3
 msgid "Port Mapping"
-msgstr ""
+msgstr "Portmappning"
 
 #: htdocs/plugins/router/pages/internet.port_mapping.html:4
 msgid ""
 "Port mapping allows remote computers to connect to a specific device within "
 "your private network."
 msgstr ""
+"Portmappning tillåter andra datorer på internet att koppla upp sig till "
+"datorer på ditt lokala nätverk"
 
 #: htdocs/plugins/router/pages/internet.port_mapping.html:6
 msgid "Protocol"
-msgstr ""
+msgstr "Protokol"
 
 #: htdocs/plugins/router/pages/internet.port_mapping.html:6
 msgid "Public Port"
-msgstr ""
+msgstr "Publikt port"
 
-#: htdocs/html/404.html:2
-msgid "The page you were trying to access was not found!"
-msgstr ""
+#: htdocs/plugins/router/pages/status.overview.js:28
+msgid "RX Rate"
+msgstr "RX"
+
+#: htdocs/plugins/router/pages/status.overview.js:70
+msgid "Root Usage (/)"
+msgstr "Root disk (/)"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:46
+msgid "Save"
+msgstr "Spara"
+
+#: htdocs/plugins/wifi/pages/wifi.schedule.html:7
+msgid "Schedule Function"
+msgstr "Schemaläggningsfunktion"
+
+#: htdocs/plugins/router/pages/status.overview.js:65
+msgid "Shared"
+msgstr "Delad"
+
+#: htdocs/plugins/router/pages/status.overview.js:28
+msgid "Signal"
+msgstr "Signal"
+
+#: htdocs/plugins/router/pages/status.overview.html:11
+msgid "Storage"
+msgstr "Utrymme"
+
+#: htdocs/plugins/router/pages/status.overview.js:67
+msgid "Swap"
+msgstr "Swap"
+
+#: htdocs/plugins/router/pages/status.overview.js:28
+msgid "TX Rate"
+msgstr "TX"
+
+#: htdocs/plugins/router/pages/status.overview.js:71
+msgid "Temporary Usage (/tmp)"
+msgstr "Temporärt utrymme (/tmp)"
 
 #: htdocs/plugins/core/widgets/luci.navbar.html:4
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Toggla navigation"
+
+#: htdocs/plugins/router/pages/status.overview.js:52
+msgid "Uptime"
+msgstr "Upptid"
+
+#: htdocs/plugins/router/pages/status.overview.js:64
+msgid "Usage"
+msgstr "Användning"
+
+#: htdocs/plugins/router/pages/status.overview.js:58
+msgid "VDSL"
+msgstr "VDSL"
+
+#: htdocs/plugins/router/pages/status.overview.js:60
+msgid "Voice Ports"
+msgstr "Voice portar"
+
+#: htdocs/plugins/router/pages/status.overview.js:56
+msgid "Wifi"
+msgstr "WiFi"
 
 #: htdocs/plugins/core/widgets/luci.login.html:3
 msgid "You are logged in!"
 msgstr "Du är inloggad!"
 
-msgid "wifi-iface.wifi-iface.ssid"
-msgstr ""
+#: htdocs/plugins/router/pages/status.overview.js:56
+#: htdocs/plugins/router/pages/status.overview.js:57
+#: htdocs/plugins/router/pages/status.overview.js:58
+#: htdocs/plugins/router/pages/status.overview.js:59
+msgid "no"
+msgstr "Nej"
 
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:10
+msgid "wifi-iface.closed"
+msgstr "Öppet nätverk"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:13
 msgid "wifi-iface.device"
 msgstr "Radio"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:19
+msgid "wifi-iface.encryption"
+msgstr "Säkerhet"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:25
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:26
+msgid "wifi-iface.key"
+msgstr "Krypteringsnyckel"
+
+#: htdocs/plugins/core/widgets/uci.wireless.interface.html:7
+msgid "wifi-iface.ssid"
+msgstr "WiFi Namn (SSID)"
+
+#: htdocs/plugins/wifi/pages/wifi.settings.html:6
+msgid "wifi.settings.info"
+msgstr "Här kan du ställa in generella inställningar för wifi kort"
+
+#: htdocs/plugins/router/pages/status.overview.js:56
+#: htdocs/plugins/router/pages/status.overview.js:57
+#: htdocs/plugins/router/pages/status.overview.js:58
+#: htdocs/plugins/router/pages/status.overview.js:59
+msgid "yes"
+msgstr "Ja"
+
+msgid "wifi-iface.wifi-iface.ssid"
+msgstr ""
 
 msgid "wifi-iface.network"
 msgstr "Nätverk"
 
 msgid "wifi-iface.mode"
-msgstr ""
-
-msgid "wifi-iface.ssid"
-msgstr "WiFi Namn (SSID)"
-
-msgid "wifi-iface.encryption"
-msgstr "Säkerhet"
+msgstr "WiFi inställning"
 
 msgid "wifi-iface.cipher"
 msgstr "Kryptering"
-
-msgid "wifi-iface.key"
-msgstr "Krypteringsnyckel"
 
 msgid "wifi-iface.gtk_rekey"
 msgstr ""
@@ -247,10 +509,7 @@ msgid "wifi-iface.instance"
 msgstr ""
 
 msgid "wifi-iface.up"
-msgstr ""
-
-msgid "wifi-iface.closed"
-msgstr "Öppet nätverk"
+msgstr "På"
 
 msgid "wifi-iface.disabled"
 msgstr ""
@@ -269,9 +528,6 @@ msgstr "Tillåt"
 
 msgid "interface.macmode.deny"
 msgstr "Neka"
-
-#~ msgid "About"
-#~ msgstr "Om"
 
 #~ msgid "Actual Data Rate"
 #~ msgstr "Nuvarande hastighet"

@@ -1,11 +1,7 @@
 $juci.module("router")
-.controller("StatsOverviewCtrl", function ($scope, $session, $rootScope, $rpc, gettextCatalog) {
+.controller("StatsOverviewCtrl", function ($scope, $session, $rootScope, $rpc, gettext, $tr) {
 	$scope.sysinfo = {}; 
 	$scope.info = {}; 
-	
-	function tr(str){
-		return gettextCatalog.getString(str); 
-	}
 	
 	$scope.systemStatusTbl = {
 		rows: [["", ""]]
@@ -23,13 +19,13 @@ $juci.module("router")
 		rows: [["", ""]]
 	}; 
 	$scope.systemDHCPLeasesTbl = {
-		columns: [tr("Hostname"), tr("IPv4-Address"), tr("MAC-Address"), tr("Leasetime remaining")], 
+		columns: [gettext("Hostname"), gettext("IPv4-Address"), gettext("MAC-Address"), gettext("Leasetime remaining")], 
 		rows: [
-			[tr("No active leases"), '', '', '']
+			[gettext("No active leases"), '', '', '']
 		]
 	}; 
 	$scope.systemStationsTbl = {
-		columns: [tr("IPv4-Address"), tr("MAC address"), tr("Signal"), tr("Noise"), tr("RX Rate"), tr("TX Rate")], 
+		columns: [gettext("IPv4-Address"), gettext("MAC address"), gettext("Signal"), gettext("Noise"), gettext("RX Rate"), gettext("TX Rate")], 
 		rows: []
 	};
 	var info = {};
@@ -48,48 +44,48 @@ $juci.module("router")
 			function (cb){$rpc.luci2.network.dhcp_leases().done(function(res){leases = res.leases || []; cb();}).fail(function(res){cb();});}
 		], function(err, next){
 			$scope.systemStatusTbl.rows = [
-				[tr("Hostname"), info.system.name],
-				[tr("Model"), info.system.nvramver],
-				[tr("Firmware Version"), info.system.firmware],
-				[tr("Kernel Version"), info.system.kernel],
-				[tr("Local Time"), new Date(sys.localtime)],
-				[tr("Uptime"), info.system.uptime],
-				[tr("Load Average"), sys.load[0] + " " + sys.load[1] + " " + sys.load[2]]
+				[$tr(gettext("Hostname")), info.system.name],
+				[$tr(gettext("Model")), info.system.nvramver],
+				[$tr(gettext("Firmware Version")), info.system.firmware],
+				[$tr(gettext("Kernel Version")), info.system.kernel],
+				[$tr(gettext("Local Time")), new Date(sys.localtime)],
+				[$tr(gettext("Uptime")), info.system.uptime],
+				[$tr(gettext("Load Average")), sys.load[0] + " " + sys.load[1] + " " + sys.load[2]]
 			]; 
 			$scope.systemExtStatusTbl.rows = [
-				[tr("Wifi"), (info.specs.wifi)?tr("yes"):tr("no")],
-				[tr("ADSL"), (info.specs.adsl)?tr("yes"):tr("no")],
-				[tr("VDSL"), (info.specs.vdsl)?tr("yes"):tr("no")],
-				[tr("Voice"), (info.specs.voice)?tr("yes"):tr("no")],
-				[tr("Voice Ports"), info.specs.voice_ports],
-				[tr("Ethernet Ports"), info.specs.eth_ports]
+				[$tr(gettext("Wifi")), (info.specs.wifi)?gettext("yes"):gettext("no")],
+				[$tr(gettext("ADSL")), (info.specs.adsl)?gettext("yes"):gettext("no")],
+				[$tr(gettext("VDSL")), (info.specs.vdsl)?gettext("yes"):gettext("no")],
+				[$tr(gettext("Voice")), (info.specs.voice)?gettext("yes"):gettext("no")],
+				[$tr(gettext("Voice Ports")), info.specs.voice_ports],
+				[$tr(gettext("Ethernet Ports")), info.specs.eth_ports]
 			]; 
 			$scope.systemMemoryTbl.rows = [
-				[tr("Usage"), '<luci-progress value="'+Math.round((sys.memory.total - sys.memory.free) / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></luci-progress>'],
-				[tr("Shared"), '<luci-progress value="'+Math.round(sys.memory.shared / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></luci-progress>'],
-				[tr("Buffered"), '<luci-progress value="'+Math.round(sys.memory.buffered / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></luci-progress>'],
-				[tr("Swap"), '<luci-progress value="'+Math.round((sys.swap.total - sys.swap.free) / 1000)+'" total="'+ Math.round(sys.swap.total / 1000) +'" units="kB"></luci-progress>']
+				[$tr(gettext("Usage")), '<luci-progress value="'+Math.round((sys.memory.total - sys.memory.free) / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></luci-progress>'],
+				[$tr(gettext("Shared")), '<luci-progress value="'+Math.round(sys.memory.shared / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></luci-progress>'],
+				[$tr(gettext("Buffered")), '<luci-progress value="'+Math.round(sys.memory.buffered / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></luci-progress>'],
+				[$tr(gettext("Swap")), '<luci-progress value="'+Math.round((sys.swap.total - sys.swap.free) / 1000)+'" total="'+ Math.round(sys.swap.total / 1000) +'" units="kB"></luci-progress>']
 			];
 			$scope.systemStorageTbl.rows = [
-				[tr("Root Usage (/)"), '<luci-progress value="'+Math.round(disk.root.used / 1000)+'" total="'+ Math.round(disk.root.total / 1000) +'" units="kB"></luci-progress>'],
-				[tr("Temporary Usage (/tmp)"), '<luci-progress value="'+Math.round(disk.tmp.used / 1000)+'" total="'+ Math.round(disk.tmp.total / 1000) +'" units="kB"></luci-progress>']
+				[$tr(gettext("Root Usage (/)")), '<luci-progress value="'+Math.round(disk.root.used / 1000)+'" total="'+ Math.round(disk.root.total / 1000) +'" units="kB"></luci-progress>'],
+				[$tr(gettext("Temporary Usage (/tmp)")), '<luci-progress value="'+Math.round(disk.tmp.used / 1000)+'" total="'+ Math.round(disk.tmp.total / 1000) +'" units="kB"></luci-progress>']
 			]; 
 			$scope.systemConnectionsTbl.rows = [
-				[tr("Active Connections"), '<luci-progress value="'+ conntrack.count +'" total="'+conntrack.limit+'" units="Connections"></luci-progress>']
+				[$tr(gettext("Active Connections")), '<luci-progress value="'+ conntrack.count +'" total="'+conntrack.limit+'"></luci-progress>']
 			]; 
 			if(leases.length){
 				$scope.systemDHCPLeasesTbl.rows = []; 
 				leases.map(function(lease){
 					var date = new Date(null);
 					date.setSeconds(lease.expires); // specify value for SECONDS here
-					var time = date.toISOString().substr(11, 8);
+					var time = date.toISOString().subsgettext(11, 8);
 					$scope.systemDHCPLeasesTbl.rows.push(
 						[lease.hostname, lease.ipaddr, lease.macaddr, time]
 					);  
 				}); 
 			} else {
 				$scope.systemDHCPLeasesTbl.rows = [
-					[tr("No active leases"), '', '', '']
+					[$tr(gettext("No active leases")), '', '', '']
 				]; 
 			}
 			if(Object.keys(clients).length){
@@ -102,7 +98,7 @@ $juci.module("router")
 				}); 
 			} else {
 				$scope.systemStationsTbl.rows = [
-					[tr("No active stations"), '', '', '', '', '']
+					[$tr(gettext("No active stations")), '', '', '', '', '']
 				]; 
 			}
 			$scope.$apply(); 

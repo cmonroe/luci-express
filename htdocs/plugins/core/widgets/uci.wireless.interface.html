@@ -1,30 +1,30 @@
 <div>
 	<luci-config-section>
 		<luci-config-lines>
-			<luci-config-line title="title"><switch ng-model="interface.disabled.value" class="green" inverted></switch></luci-config-line>
+			<luci-config-line title="{{'Enabled'|translate}}"><switch ng-model="interface.disabled.value" class="green" inverted></switch></luci-config-line>
 		</luci-config-lines>
 		<luci-config-lines ng-hide="interface.disabled.value">
-			<luci-config-line title="'wifi-iface.ssid'">
+			<luci-config-line title="{{'wifi-iface.ssid'|translate}}">
 				<input type="text" class="form-control" placeholder="Wifi Name" ng-model="interface.ssid.value"/>
 			</luci-config-line>
-			<luci-config-line title="'wifi-iface.closed'">
+			<luci-config-line title="{{'wifi-iface.closed'|translate}}">
 				<switch id="enabled" name="enabled" ng-model="interface.closed.value" class="green" inverted></switch>
 			</luci-config-line>
-			<luci-config-line title="'wifi-iface.device'">
-				<ui-select ng-model="interface.device.value" search-enabled="false">
+			<luci-config-line title="{{'wifi-iface.device'|translate}}">
+				<ui-select ng-model="interface.device.value"  style="width: 200px;" search-enabled="false">
 					<ui-select-match placeholder="{{ 'Choose Device' | translate}}">{{"interface."+$select.selected}}</ui-select-match>
 					<ui-select-choices repeat="item in devices" refresh-delay="0"><div>{{"interface."+item}}</div></ui-select-choices>
 				</ui-select>
 			</luci-config-line>
-			<luci-config-line title="'wifi-iface.encryption'">
-				<ui-select ng-model="interface.encryption.value" theme="bootstrap" search-enabled="false">
+			<luci-config-line title="{{'wifi-iface.encryption'|translate}}">
+				<ui-select ng-model="interface.encryption.value"  style="width: 200px;" theme="bootstrap" search-enabled="false">
 					<ui-select-match placeholder="{{ 'Choose Protection'  | translate}}">{{"encryption."+$select.selected}}</ui-select-match>
 					<ui-select-choices repeat="item in interface.encryption.schema.allow" refresh-delay="0"><div >{{"encryption."+item}}</div></ui-select-choices>
 				</ui-select>
 			</luci-config-line>
-			<luci-config-line title="'wifi-iface.key'">
-				<input type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="Wifi Password" ng-model="interface.key.value"/>
-				<div style="float: right;margin-top: 10px; margin-bottom: 10px;"><strong style="font-size: 1.2em;">Display Characters: <input type="checkbox" ng-model="showPassword" /></strong></div>
+			<luci-config-line title="{{'wifi-iface.key'|translate}}">
+				<input type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="{{'wifi-iface.key'|translate}}" ng-model="interface.key.value"/>
+				<div style="float: right;margin-top: 10px; margin-bottom: 10px;"><strong style="font-size: 1.2em;">{{'Display Characters'|translate}}: <input type="checkbox" ng-model="showPassword" /></strong></div>
 			</luci-config-line>
 		</luci-config-lines>
 	</luci-config-section>
