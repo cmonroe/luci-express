@@ -67,7 +67,10 @@ angular.module("luci")
 				"uci.rollback",
 				"uci.confirm", 
 				"uci.revert", 
-				"uci.configs"
+				"uci.configs",
+				// local stuff for the node server. 
+				"local.features", 
+				"local.set_rpc_host"
 				// the rest is automatically retreived from session now!
 				/*"session.destroy", 
 				

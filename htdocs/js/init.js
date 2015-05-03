@@ -73,7 +73,7 @@ angular.module("luci")
 		function(next){
 			progress("Loading plugins..", 8); 
 			var count = 0; 
-			async.eachSeries($config.plugins, function(id, next){
+			async.each($config.plugins, function(id, next){
 				count++; 
 				progress(".."+id, 10+((80/$config.plugins.length) * count)); 
 				var plugin_root = "plugins/"+id; 
@@ -88,13 +88,27 @@ angular.module("luci")
 						Object.keys(data.pages).map(function(k){
 							var page = data.pages[k]; 
 							if(page.view){
-								scripts.push(plugin_root + "/" + page.view); 
-								$juci.$stateProvider.state(k.replace(".", "_"), {
+								//scripts.push(plugin_root + "/" + page.view); 
+								console.log("Registering state "+k.replace(/\./g, "_")); 
+								$juci.$stateProvider.state(k.replace(/\./g, "_"), {
 									url: "/"+k, 
 									views: {
 										"content": {
-											templateUrl: (page.view)?(plugin_root + "/" + page.view + ".html"):"/html/default.html", 
+											templateUrl: plugin_root + "/" + page.view + ".html", 
 										}
+									},
+									// Perfect! This loads our controllers on demand! :) 
+									resolve: {
+											deps : function ($q, $rootScope) {
+													var deferred = $q.defer();
+													require([plugin_root + "/" + page.view], function (tt) {
+															$rootScope.$apply(function () {
+																	deferred.resolve();
+															});
+															deferred.resolve()
+													});
+													return deferred.promise;
+											}
 									},
 									onEnter: function($window){
 										// TODO: all these redirects seem to load page multiple times. 
@@ -105,16 +119,7 @@ angular.module("luci")
 							}
 						}); 
 					} 
-					async.eachSeries(scripts, function(script, next){
-						//console.log("...."+script); 
-						progress("...."+script, 10 + ((80 / $config.plugins.length) * count)); 
-						require([script], function(module){
-							next(); 
-						}); 
-					}, function(){
-						// goto next plugin
-						next(); 
-					}); 
+					next(); 
 				}).error(function(data){
 					next(); 
 				}); 
@@ -122,6 +127,18 @@ angular.module("luci")
 				
 				next(); 
 			});
+		}, 
+		function(next){
+			async.each(scripts, function(script, next){
+				//console.log("...."+script); 
+				//progress("...."+script, 10 + ((80 / $config.plugins.length) * count)); 
+				require([script], function(module){
+					next(); 
+				}); 
+			}, function(){
+				// goto next plugin
+				next(); 
+			}); 
 		}, 
 		function(next){
 			progress("Getting navigation..", 100); 
@@ -132,22 +149,23 @@ angular.module("luci")
 				Object.keys(data.menu).map(function(key){
 					var menu = data.menu[key]; 
 					var view = menu.view; 
-					var path = key.replace("/", "."); 
+					var path = key.replace(/\//g, "."); 
 					var obj = {
 						path: path, 
 						modes: data.menu[key].modes || [ ], 
 						text: data.menu[key].title, 
 						index: data.menu[key].index || 0, 
 					}; 
-					if(menu.redirect){
+					/*if(menu.redirect){
 						obj.redirect = menu.redirect; 
-					}
-					if(view){
-						obj.page = "/pages/"+view.replace("/", ".")+".html"; 
-					}
+					}*/
+					/*if(view){
+						obj.page = "/pages/"+path.replace(/\//g, ".")+".html"; 
+					}*/
 					$navigation.register(obj); 
 					
 				}); 
+				//console.log("NAV: "+JSON.stringify($navigation.tree())); 
 				//$rootScope.$apply(); 
 				next(); 
 			}).fail(function(){

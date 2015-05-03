@@ -60,7 +60,7 @@ angular.module("luci")
 													deferred.reject((function(){
 														switch(result.result[0]){
 															case 6: return gettext("Access denied!"); 
-															default: return gettext("RPC error: ")+result.result[0]; 
+															default: return gettext("RPC error #")+result.result[0]+": "+result.result[1]; 
 														}
 													})()); 
 												} else {
