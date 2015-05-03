@@ -149,55 +149,6 @@ angular.module("luci", [
 		}); 
 	})
 
-<<<<<<< HEAD
-window.app = angular.module("luci"); 
-
-angular.module("luci").controller("BodyCtrl", function ($scope, $localStorage, $state, $session, $location, $window, $rootScope, $config) {
-	$scope.menuClass = function(page) {
-		var current = $location.path().substring(1);
-		return page === current ? "active" : "";
-	};
-	$scope.modeList = [{
-		id: 0, 
-		label: "Basic Mode"
-	}]; 
-	
-	$config.mode = $localStorage.getItem("mode") || "basic"; 
-	$config.theme = $localStorage.getItem("theme") || "default"; // TODO: change to default inteno
-	
-	$scope.theme_index = "themes/"+$config.theme+"/index.html"; 
-	
-	$scope.guiModes = [
-		{id: "basic", label: "Basic Mode"},
-		{id: "expert", label: "Expert Mode"},
-		{id: "logout", label: "Log out"}
-	]; 
-	Object.keys($scope.guiModes).map(function(k){
-		var m = $scope.guiModes[k]; 
-		if(m.id == $config.mode) $scope.selectedMode = m;
-	});  
-	$scope.onChangeMode = function(item){
-		var selected = item.id; 
-		if(selected == "logout") {
-			$session.logout().always(function(){
-				$window.location.href="/"; 
-			}); 
-		} else {
-			$localStorage.setItem("mode", selected); 
-			$config.mode = selected; 
-			$state.reload(); 
-		}
-	};
-	/*setTimeout(function(){
-		$("#guiMode").selectpicker('val', $config.mode || "basic"); 
-	}, 100); */
-	/*$("#guiMode").on("change", function(){
-		var selected = $(this).find("option:selected").val();
-		console.log(selected); 
-		if(selected == "logout") {
-			$session.logout().always(function(){
-				$window.location.href="/"; 
-=======
 angular.module("luci")
 .factory("$hosts", function($rpc, $uci){
 	var hosts = {}; 
@@ -279,7 +230,6 @@ angular.module("luci")
 				}
 			}, function(){
 				deferred.resolve(); 
->>>>>>> 74fb11b5f2fc9514058cc7f2354fe1619c5c81c7
 			}); 
 			return deferred.promise(); 
 		}
