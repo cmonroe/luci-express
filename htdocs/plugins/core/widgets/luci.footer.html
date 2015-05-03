@@ -1,11 +1,16 @@
-<div class="row" style="color: #777">
-	<div class="col-md-4">
-		<span ng-repeat="lang in languages">
-			<a style="text-decoration: {{isActiveLanguage(lang)?'underline':'none'}}; color: inherit;" href="" ng-click="setLanguage(lang)">{{lang.title}}</a>
-			{{$last ? '' : ' | '}}
-		</span>
-	</div>
-	<div class="col-md-8" style="text-align: right;">
-		WAN IP Address: {{wanip}} | Firmware version: {{firmwareVersion}}
+<div class="container">
+	<div id="language-info" >
+		<div id="language-switcher-list" >
+			<span ng-repeat="lang in languages">
+				<a style="text-decoration: {{isActiveLanguage(lang)?'underline':'none'}}; color: inherit;" href="" ng-click="setLanguage(lang)">{{lang.title}}</a>{{$last ? '' : ' | '}}
+			</span>
+		</div>
+		<div style="float: right;">
+			<juci-theme-picker></juci-theme-picker>
+		</div>
+		<div id="info">
+			WAN IP Address: {{wanip}} | Firmware version: {{firmwareVersion}}
+		</div>
+		
 	</div>
 </div>

@@ -1,5 +1,17 @@
 <luci-layout-with-sidebar>
 	<div ng-controller="WifiMacFilterPageCtrl">
-		Mac filter
+		<luci-config>
+			<luci-config-heading>{{ 'MAC Filter' | translate }}</luci-config-heading>
+			<luci-config-info>{{ 'wifi.macfilter.info' | translate }}</luci-config-info>
+			<luci-config-section ng-repeat="iface in interfaces">
+				<luci-config-heading>{{ "wifi-iface."+iface['.name'] }}</luci-config-heading>
+				<uci-wireless-interface-macfilter-edit ng-model="iface"></uci-wifi-iface-macfilter-edit>
+			</luci-config-section>
+			<!--<luci-config-section>
+				<luci-config-heading>str.guest.wifi</luci-config-heading>
+				<uci-wireless-interface-macfilter-edit ng-model="guest_wifi"></uci-wifi-iface-macfilter-edit>
+			</luci-config-section>-->
+			<luci-config-apply></luci-config-apply>
+		</luci-config>
 	</div>
 </luci-layout-with-sidebar>

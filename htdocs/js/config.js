@@ -24,7 +24,7 @@ angular.module("luci")
 .factory('$config', function($rootScope){
 	return {
 		mode: "basic", // basic or expert supported
-		model: "Inteno DG301",
+		//model: "Inteno DG301",
 		languages: {
 			"tr": {
 				title: "Turkish"
@@ -39,11 +39,11 @@ angular.module("luci")
 				title: "Swedish"
 			}
 		},
-		themes: {
-			"default": "/themes/default/",
-			"red" : "/themes/inteno-red/",
-			"vodaphone" : "/themes/vodaphone/"
-		}, 
+		themes: [
+			"default", 
+			"inteno-red", 
+			"vodaphone"
+		], 
 		plugins: [
 			"hello_world", 
 			"core", 
@@ -53,11 +53,27 @@ angular.module("luci")
 		], 
 		rpc: {
 			//host: "", not used anymore because we now instead do rpc forwarding in server.js!
-			exposed_calls: [
+			exposed_calls: [ // TODO: only login and access calls should always be available 
 				"session.login", 
-				"session.access", 
-				"session.destroy", 
-				"luci2.ui.menu", 
+				"session.access",
+				// TODO: these calls use wildcards in acl so we need to somehow get them automatically
+				// for now I defined them manually here. 
+				"luci2.ui.menu",
+				"uci.state", 
+				"uci.set", 
+				"uci.add", 
+				"uci.delete", 
+				"uci.commit", 
+				"uci.rollback",
+				"uci.confirm", 
+				"uci.revert", 
+				"uci.configs",
+				// local stuff for the node server. 
+				"local.features", 
+				"local.set_rpc_host"
+				// the rest is automatically retreived from session now!
+				/*"session.destroy", 
+				
 				"luci2.network.conntrack_count",
 				"luci2.network.dhcp_leases",
 				"luci2.system.diskfree", 
@@ -65,7 +81,7 @@ angular.module("luci")
 				"router.info",
 				"router.clients", 
 				"network.interface.status", 
-				"system.info"
+				"system.info"*/
 			]
 		}
 	}; 

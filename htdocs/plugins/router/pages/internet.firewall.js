@@ -1,5 +1,10 @@
 $juci.module("router")
-.controller("InternetFirewallPageCtrl", function($scope){
-	$scope.firewallEnabled = 1;
-	$scope.allowWANPing = 1;  
+.controller("InternetFirewallPageCtrl", function($scope, $uci){
+	$uci.sync("firewall").done(function(){
+		$scope.firewall = $uci.firewall; 
+		//settings.firewall = Number(settings.firewall); 
+		//settings.ping_wan = Number(settings.ping_wan); 
+		
+		$scope.$apply(); 
+	}); 
 }); 

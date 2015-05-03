@@ -35,16 +35,17 @@ function supports_html5_storage() {
 
 $juci = {
 		plugins: {},
-		module: function(name){
+		module: function(name, root, data){
+			if(data){
+				data.plugin_root = root; 
+				this.plugins[name] = data; 
+			}
 			var plugin = this.plugins[name]; 
 			var juci = this; 
 			return {
 				plugin_root: plugin.plugin_root, 
 				directive: function(name, fn){
-					return juci.directive(name, fn); 
-					var dir = fn(); 
-					if(dir.templateUrl && plugin.plugin_root) dir.templateUrl = plugin.plugin_root + "/" + dir.templateUrl; 
-					return juci.directive(name, dir); 
+					return juci.directive(name, fn);
 				}, 
 				controller: function(name, fn){
 					return juci.controller(name, fn); 
@@ -77,7 +78,9 @@ angular.module("luci", [
 	"ui.bootstrap",
 	"ui.router", 
 	'ui.select',
+	'angularModalService', 
 	"uiSwitch",
+	"ngAnimate", 
 	"gettext"
 	])
 	.config(function ($stateProvider, $locationProvider, $compileProvider, $urlRouterProvider, $controllerProvider) {
@@ -87,29 +90,16 @@ angular.module("luci", [
 		$juci.directive = $compileProvider.directive; 
 		$juci.state = $stateProvider.state; 
 		$juci.$stateProvider = $stateProvider; 
+		$juci.$urlRouterProvider = $urlRouterProvider; 
 		$juci.redirect = function(page){
 			window.location.href = "#!"+page; 
 		}
-		//$stateProvider.otherwise("login"); 
 		
-		/*$stateProvider.state("redirect", {
-			url: "/redirect/:path", 
-			views: {
-				"content": {
-					templateUrl: "pages/default.html"
-				}
-			}, 
-			onEnter: function($state, $stateParams){
-				console.log(JSON.stringify($stateParams)); 
-				$state.go($stateParams.path); 
-			},
-			luci_config: {}
-		}); */
 		$stateProvider.state("404", {
 			url: "/404", 
 			views: {
 				"content": {
-					templateUrl: "plugins/core/pages/404.html"
+					templateUrl: "/html/404.html"
 				}
 			},
 			onEnter: function(){
@@ -123,139 +113,43 @@ angular.module("luci", [
 			url: "/init/:redirect", 
 			views: {
 				"content": {
-					templateUrl: "plugins/core/pages/loading.html"
+					templateUrl: "html/init.html"
 				}
 			}, 
 			onEnter: function($state, $stateParams, $config, $session, $rpc, $navigation, $location, $rootScope, $http){
 				if($juci._initialized) {
 					$juci.redirect($stateParams.redirect || "overview"); 
 					return;
+				} else {
+					
 				}
-				console.log("INIT"); 
-				async.series([
-					
-					function(next){
-						console.log("Getting config.."); 
-						// TODO: use rpc
-						next(); 
-					},
-					function(next){
-						console.log("Loading plugins.."); 
-						async.eachSeries($config.plugins, function(id, next){
-							console.log(".."+id); 
-							var plugin_root = "plugins/"+id; 
-							$http.get(plugin_root + "/plugin.json")
-							.success(function(data){
-								var scripts = []; 
-								data.plugin_root = plugin_root; 
-								$juci.plugins[id] = data; 
-								if(data && data.scripts){
-									data.scripts.map(function(x){scripts.push(plugin_root + "/" + x); });
-								} 
-								// load page controllers
-								if(data.pages) {
-									Object.keys(data.pages).map(function(k){
-										var page = data.pages[k]; 
-										if(page.view){
-											scripts.push(plugin_root + "/" + page.view); 
-											$stateProvider.state(k.replace(".", "_"), {
-												url: "/"+k, 
-												views: {
-													"content": {
-														templateUrl: (page.view)?(plugin_root + "/" + page.view + ".html"):"plugins/core/pages/default.html", 
-													}
-												},
-												onEnter: function($window){
-													// TODO: all these redirects seem to load page multiple times. 
-													//if(item.redirect) $window.location.href = "#!"+item.redirect; 
-												},
-												//luci_config: item
-											}); 
-										}
-									}); 
-								} 
-								async.eachSeries(scripts, function(script, next){
-									require([script], function(module){
-										next(); 
-									}); 
-								}, function(){
-									
-									// goto next plugin
-									next(); 
-								}); 
-							}).error(function(data){
-								
-								next(); 
-							}); 
-						}, function(){
-							
-							next(); 
-						});
-					}, 
-					function(next){
-						console.log("Validating session.."); 
-						$session.init().done(function(){
-							next(); 
-						}).fail(function(){
-							console.log("Failed to verify session."); 
-							$state.go("login"); 
-						}); 
-					}, 
-					function(next){
-						console.log("Getting navigation.."); 
-						
-						// get the menu navigation
-						$rpc.luci2.ui.menu().done(function(data){
-							//console.log(JSON.stringify(data)); 
-							Object.keys(data.menu).map(function(key){
-								var menu = data.menu[key]; 
-								var view = menu.view; 
-								var path = key.replace("/", "."); 
-								var obj = {
-									path: path, 
-									modes: data.menu[key].modes || [ ], 
-									text: data.menu[key].title, 
-									index: data.menu[key].index || 0, 
-								}; 
-								if(menu.redirect){
-									obj.redirect = menu.redirect; 
-								}
-								if(view){
-									obj.page = "/pages/"+view.replace("/", ".")+".html"; 
-								}
-								$navigation.register(obj); 
-								
-							}); 
-							//$rootScope.$apply(); 
-							next(); 
-						}); 
-					}
-				], function(err){
-					if(err) $state.go("error"); 
-					$juci._initialized = true; 
-					
-					// add this here to avoid being redirected to the 404 page from the start
-					$urlRouterProvider.otherwise("/init/404"); 
-		
-					console.log("redirecting -> "+$stateParams.redirect); 
-					$state.go($stateParams.redirect || "overview"); 
-				}); 
 			},
 			luci_config: {}
 		}); 
 	})
-	.run(function($rootScope, $state, $session, gettextCatalog, $rpc, $config, $location, $navigation){
+	.run(function($rootScope, $state, $session, gettextCatalog, $rpc, $uci, $config, $location, $navigation){
 		$rootScope.config = $config; 
+		//window.rpc = $rpc; 
+		//window.uci = $uci; 
+		//$rootScope.theme_index = "html/init.html"; 
 		// set current language
-		//gettextCatalog.currentLanguage = "se"; 
-		//gettextCatalog.debug = true;
+		gettextCatalog.currentLanguage = "se"; 
+		gettextCatalog.debug = true;
 		/*$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });*/
 		var path = $location.path().replace("/", "").replace(".", "_");  
-		$state.go("init", {"redirect": path}); 
+		
+		$session.init().done(function(){
+			$state.go("init", {"redirect": path}); 
+		}).fail(function(){
+			console.log("Failed to verify session."); 
+			$state.go("init", {"redirect": "login"}); 
+			//$state.go("login"); 
+		}); 
 	})
 
+<<<<<<< HEAD
 window.app = angular.module("luci"); 
 
 angular.module("luci").controller("BodyCtrl", function ($scope, $localStorage, $state, $session, $location, $window, $rootScope, $config) {
@@ -303,16 +197,94 @@ angular.module("luci").controller("BodyCtrl", function ($scope, $localStorage, $
 		if(selected == "logout") {
 			$session.logout().always(function(){
 				$window.location.href="/"; 
+=======
+angular.module("luci")
+.factory("$hosts", function($rpc, $uci){
+	var hosts = {}; 
+	return {
+		insert: function(host){
+			var deferred = $.Deferred(); 
+			if(host.macaddr in hosts){
+				deferred.resolve(hosts[host.macaddr]); 
+			} else {
+				$uci.add("hosts", "host", host).done(function(id){
+					$uci.commit("hosts").done(function(){
+						console.log("Added new host "+host.macaddr+" to database: "+id); 
+						hosts[host.macaddr] = host; 
+						deferred.resolve(host); 
+					}).fail(function(){deferred.reject();}); 
+				}).fail(function(){
+					deferred.reject(); 
+				});
+			}
+			return deferred.promise(); 
+		}, 
+		select: function(rules){
+			var mac = rules.macaddr; 
+			var deferred = $.Deferred(); 
+			if(mac in hosts) deferred.resolve(hosts[mac]); 
+			else {
+				async.series([
+					function(next){
+						$uci.show("hosts").done(function(result){
+							Object.keys(result).map(function(k){
+								hosts[result[k].macaddr] = result[k]; 
+							}); 
+							if(mac in hosts) next(hosts[mac]); 
+							else next(); 
+						}).fail(function(){ next(); }); 
+					}, 
+					function(next){
+						$rpc.router.clients().done(function(clients){
+							async.eachSeries(Object.keys(clients), function(x, next){
+								var cl = clients[x]; 
+								if(!(cl.macaddr in hosts)){
+									console.log("Adding host "+cl.macaddr); 
+									
+									var host = {
+										hostname: cl.hostname, 
+										macaddr: cl.macaddr
+									}; 
+									$uci.add("hosts", "host", host).done(function(id){
+										$uci.commit("hosts").done(function(){
+											console.log("Added new host "+cl.macaddr+" to database - "+id); 
+											hosts[cl.macaddr] = host; 
+										}).always(function(){ next(); }); 
+									});
+								} else {
+									next(); 
+								}
+							}, function(){
+								next(); 
+							}); 
+						}).fail(function(){ next(); }); 
+					}
+				], function(){
+					console.log("HOSTS: "+JSON.stringify(hosts)); 
+					if(!(mac in hosts)) deferred.reject(); 
+					else deferred.resolve(hosts[mac]); 
+				}); 
+			}
+			return deferred.promise(); 
+		},
+		commit: function(){
+			var deferred = $.Deferred(); 
+			async.eachSeries(Object.keys(hosts), function(x, next){
+				var h = hosts[x]; 
+				if(!h || !h.commit) {
+					console.log("Could not commit host "+x); 
+					next(); 
+				} else {
+					h.commit().always(function(){next(); }); 
+				}
+			}, function(){
+				deferred.resolve(); 
+>>>>>>> 74fb11b5f2fc9514058cc7f2354fe1619c5c81c7
 			}); 
-		} else {
-			$config.mode = selected; 
-			$state.reload(); 
+			return deferred.promise(); 
 		}
-		localStorage.setItem("mode", selected); 
-	}); */
-	
+	}
 }); 
-
 
 $(document).ready(function(){
 	          

@@ -1,5 +1,6 @@
 {
 	"scripts": [
+		"widgets/theme_picker",
 		"widgets/luci.footer",
 		"widgets/luci.layout.naked",
 		"widgets/luci.layout.single_column",
@@ -8,7 +9,14 @@
 		"widgets/luci.nav",
 		"widgets/luci.navbar",
 		"widgets/luci.progress",
-		"widgets/luci.table"
+		"widgets/luci.table",
+		"widgets/luci.top_bar", 
+		"widgets/luci.config", 
+		"widgets/uci.wireless.interface",
+		"widgets/uci.wireless.interface.macfilter.edit",
+		"widgets/uci.wireless.device.edit",
+		"widgets/uci.firewall.nat.rule.edit",
+		"widgets/core.modal"
 	],
 	"pages": {
 		"overview": {
@@ -16,6 +24,9 @@
 		}, 
 		"login": {
 			"view": "pages/login"
+		}, 
+		"bootstrap": {
+			"view": "pages/bootstrap"
 		}
 	}
 }

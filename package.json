@@ -6,7 +6,10 @@
 		"express": "*", 
 		"body-parser": "*",
 		"grunt": "*",
- 		"grunt-angular-gettext": "*"
+ 		"grunt-angular-gettext": "*",
+		"request": "*",
+		"glob": "*", 
+		"async": "*"
  },
   "engines": {
     "node": "0.10.x",

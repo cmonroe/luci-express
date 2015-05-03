@@ -112,7 +112,9 @@
 				]
 			},
 			"uci": [
-				"dropbear"
+				"dropbear", 
+				"easybox", 
+				"hosts"
 			]
 		},
 		"write": {
@@ -123,7 +125,9 @@
 				]
 			},
 			"uci": [
-				"dropbear"
+				"dropbear", 
+				"easybox", 
+				"hosts"
 			]
 		}
 	},

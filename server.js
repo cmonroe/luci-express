@@ -7,7 +7,7 @@ var request = require("request");
 var bodyParser = require('body-parser')
 
 var config = {
-	ubus_uri: "" // <-- your router uri
+	ubus_uri: "http://whitebox/ubus" // <-- your router uri
 }; 
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -18,29 +18,36 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(express.static(__dirname + '/htdocs'));
 
 var rpc_calls = {
-	"luci2.ui.menu": function(params, next){
+	/*"luci2.ui.menu": function(params, next){
 		var menu = {}; 
-		[
-			"share/menu.d/overview.json", 
-			"share/menu.d/settings.json",
-			"share/menu.d/internet.json",
-			"share/menu.d/status.json",
-			"share/menu.d/wifi.json"
-		].map(function(file){
-			var obj = JSON.parse(fs.readFileSync(file)); 
-			Object.keys(obj).map(function(k){
-				menu[k] = obj[k]; 
-			});  
+		// combine all menu files we have locally
+		fs.readdir("share/menu.d", function(err, files){
+			files.map(function(file){
+				var obj = JSON.parse(fs.readFileSync("share/menu.d/"+file)); 
+				Object.keys(obj).map(function(k){
+					menu[k] = obj[k]; 
+				});  
+			}); 
+			next({
+				menu: menu
+			}); 
 		}); 
-		next({
-			menu: menu
-		}); 
+	}, */
+	"local.features": function(params, next){
+		next({"list": ["rpcforward"]}); 
 	}, 
-	"session.access": function(params, next){
+	"local.set_rpc_host": function(params, next){
+		if(params.rpc_host) {
+			config.ubus_uri = "http://"+params.rpc_host+"/ubus"; 
+			console.log("Server: will forward all requests to "+config.ubus_uri); 
+		}
+		next({}); 
+	}, 
+	/*"session.access": function(params, next){
 		next({
-			"access-group": [ "a", "b" ]
+			"access-group": [ "a", "b" ] // just bogus access groups
 		}); 
-	}
+	}*/
 }; 
 
 // RPC end point
@@ -49,50 +56,57 @@ app.post('/ubus', function(req, res) {
   
   var data = req.body, err = null, rpcMethod;
   
-	console.log("JSON_CALL (-> "+config.ubus_uri+"): "+JSON.stringify(data)); 
 	
-	function doLocalRPC(){
-		if (!err && data.jsonrpc !== '2.0') {
-			onError({
-				code: -32600,
-				message: 'Bad Request. JSON RPC version is invalid or missing',
-				data: null
-			}, 400);
-			return;
-		}
-		
-		//console.log("Call: "+data.method+" "+JSON.stringify(data.params)); 
-		var name = data.params[1]+"."+data.params[2]; 
-		if(name in rpc_calls){
-			rpc_calls[name](null, function(resp){
-				res.write(JSON.stringify({
-					jsonrpc: "2.0", 
-					result: [0, resp]
-				}));
-				
-				res.end(); 
-			}); 
-		} else {
-			console.log("Unknown RPC call "+name); 
-			res.end(); 
-		}
+	if (!err && data.jsonrpc !== '2.0') {
+		onError({
+			code: -32600,
+			message: 'Bad Request. JSON RPC version is invalid or missing',
+			data: null
+		}, 400);
+		return;
 	}
 	
-  request({
-    url: config.ubus_uri,
-    method: "POST",
-    json: true,   // <--Very important!!!
-    body: data
-	}, function (error, response, body) {
-		if(error){ 
-			doLocalRPC(); 
-			return; 
-		}
-		var json = JSON.stringify(body); 
-		console.log("JSON_RESP: "+json); 
-		res.write(json); 
-		res.end(); 
-	});
+	//console.log("Call: "+data.method+" "+JSON.stringify(data.params)); 
+	var name = data.params[1]+"."+data.params[2]; 
+	if(name in rpc_calls){
+		console.log("JSON_LOCAL: "+JSON.stringify(data)); 
+	
+		rpc_calls[name](data.params[3], function(resp){
+			var json = JSON.stringify({
+				jsonrpc: "2.0", 
+				result: [0, resp]
+			});
+			console.log("JSON_RESP: "+json); 
+			res.write(json); 
+			res.end(); 
+		}); 
+	} else {
+		console.log("JSON_CALL (-> "+config.ubus_uri+"): "+JSON.stringify(data)); 
+	
+		request({ 
+			url: config.ubus_uri,
+			method: "POST",
+			json: true,   // <--Very important!!!
+			body: data
+		}, function (error, response, body) {
+			if(error){ 
+				console.log("ERROR: "+error); 
+				body = JSON.stringify({
+					jsonrpc: "2.0", 
+					result: [1, String(error)]
+				});
+				//doLocalRPC(); 
+			}
+			var json = JSON.stringify(body); 
+			console.log("JSON_RESP: "+json); 
+			res.write(json); 
+			res.end(); 
+		});
+		//console.log("Unknown RPC call "+name); 
+		//res.end(); 
+	}
+	
+  
 /*
 	console.log(JSON.stringify(data)); 
 	

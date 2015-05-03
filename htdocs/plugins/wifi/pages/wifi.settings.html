@@ -1,5 +1,15 @@
 <luci-layout-with-sidebar>
 	<div ng-controller="WifiSettingsPageCtrl">
-		Settings
+		<luci-config>
+			<luci-config-section>
+				<luci-config-heading>{{'Settings'|translate}}</luci-config-heading>
+				<luci-config-info>{{'wifi.settings.info'|translate}}</luci-config-info>
+				<div ng-repeat="dev in devices">
+					<h3>{{ "wifi-device."+dev[".name"] | translate }}</h3>
+					<uci-wireless-device-edit ng-model="dev"></uci-wireless-device-edit>
+				</div>
+			</luci-config-section>
+			<luci-config-apply></luci-config-apply>
+		</luci-config>
 	</div>
 </luci-layout-with-sidebar>

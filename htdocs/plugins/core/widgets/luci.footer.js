@@ -25,14 +25,11 @@ $juci.module("core")
 	var plugin_root = $juci.module("core").plugin_root; 
 	
 	return {
-		// accepted parameters for this tag
-		scope: {
-		}, 
 		templateUrl: plugin_root+"/widgets/luci.footer.html", 
 		controller: "luciFooterController"
 	}; 
 })
-.controller("luciFooterController", function($scope, $rpc, $languages, gettextCatalog){
+.controller("luciFooterController", function($scope, $rpc, $config, $languages, gettextCatalog){
 	// TODO: move this into a higher level controller maybe? 
 	$scope.languages = $languages.getLanguages(); 
 	$scope.isActiveLanguage = function(lang){
@@ -41,6 +38,7 @@ $juci.module("core")
 	$scope.setLanguage = function(lang){
 		$languages.setLanguage(lang.short_code); 
 	}; 
+	
 	$rpc.network.interface.status({
 		"interface": "wan"
 	}).done(function(wan){
@@ -49,5 +47,5 @@ $juci.module("core")
 			$scope.wanip = wan["ipv4-address"][0].address; 
 			$scope.$apply(); 
 		}); 
-	}); 
+	}); 	
 }); 
