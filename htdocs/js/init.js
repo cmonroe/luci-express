@@ -89,7 +89,7 @@ angular.module("luci")
 							var page = data.pages[k]; 
 							if(page.view){
 								//scripts.push(plugin_root + "/" + page.view); 
-								console.log("Registering state "+k.replace(/\./g, "_")); 
+								//console.log("Registering state "+k.replace(/\./g, "_")); 
 								$juci.$stateProvider.state(k.replace(/\./g, "_"), {
 									url: "/"+k, 
 									views: {

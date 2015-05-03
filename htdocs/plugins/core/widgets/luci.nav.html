@@ -2,14 +2,9 @@
 	<ul class="nav nav-pills nav-stacked span2">
 		<li class="dropdown" ng-repeat="item in tree.children_list" ng-show="itemVisible(item)">
 			<a href="#!{{item.path}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{item.text | translate}}</a>
-			<ul class="nav nav-pills nav-stacked span2">
-				<li class="dropdown" ng-repeat="item2 in item.children_list">
+			<ul class="nav nav-pills nav-stacked">
+				<li style="padding-left: 10px;" ng-repeat="item2 in item.children_list">
 					<a href="#!{{item2.path}}">{{item2.text | translate}}</a>
-					<ul>
-						<li style="list-style: none;" ng-repeat="item3 in item2.children_list">
-							<a href="#!{{item3.path}}">{{item3.text | translate}}</a>
-						</li>
-					</ul>
 				</li>
 			</ul>
 		</li>
