@@ -110,3 +110,6 @@ msgid "Configuration"
 msgstr ""
 msgid "Advanced"
 msgstr ""
+
+msgid "application.name"
+msgstr ""

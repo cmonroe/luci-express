@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.5.4\n"
 
 msgid "Overview"
 msgstr "Översikt"
@@ -134,7 +134,7 @@ msgstr "DSN"
 msgid "DSL"
 msgstr "DSL"
 
-#: htdocs/plugins/router/pages/status.overview.js:59
+#: htdocs/plugins/router/pages/status.status.js:59
 msgid "Voice"
 msgstr "Telefoni"
 
@@ -194,6 +194,9 @@ msgstr "Konfiguration"
 msgid "Advanced"
 msgstr "Avancerat"
 
+msgid "application.name"
+msgstr "LuCI-Express"
+
 #: htdocs/plugins/router/pages/internet.exposed_host.html:14
 msgid ""
 "<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></"
@@ -203,15 +206,15 @@ msgid ""
 "forwarded: {{ nonforwardedPorts || 'None'}}."
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:57
+#: htdocs/plugins/router/pages/status.status.js:57
 msgid "ADSL"
 msgstr "ADSL"
 
-#: htdocs/plugins/router/pages/status.overview.js:74
+#: htdocs/plugins/router/pages/status.status.js:74
 msgid "Active Connections"
 msgstr "Aktiva uppkopplingar"
 
-#: htdocs/plugins/router/pages/status.overview.html:20
+#: htdocs/plugins/router/pages/status.status.html:20
 msgid "Active Stations"
 msgstr "Aktiva klienter"
 
@@ -235,9 +238,17 @@ msgstr "Bas"
 msgid "Basic Mode"
 msgstr "Basic Mode"
 
-#: htdocs/plugins/router/pages/status.overview.js:66
+#: htdocs/plugins/router/pages/status.status.dsl.html:22
+msgid "Bit Rate"
+msgstr "Bithastighet"
+
+#: htdocs/plugins/router/pages/status.status.js:66
 msgid "Buffered"
 msgstr "Buffrad"
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:37
+msgid "Cell Statistics"
+msgstr "Samtals-statistik"
 
 #: htdocs/plugins/router/pages/settings.password.html:18
 msgid "Change Password"
@@ -271,7 +282,7 @@ msgstr "Välj säkerhet"
 msgid "Connection Type"
 msgstr "Anslutningstyp"
 
-#: htdocs/plugins/router/pages/status.overview.html:14
+#: htdocs/plugins/router/pages/status.status.html:14
 msgid "Connections"
 msgstr "Anslutningar"
 
@@ -283,12 +294,24 @@ msgstr "Nuvarande mjukvaruversion"
 msgid "Current password"
 msgstr "Nuvarande lösenord"
 
-#: htdocs/plugins/router/pages/status.overview.html:17
+#: htdocs/plugins/router/pages/status.status.html:17
 msgid "DHCP Leases"
 msgstr "DHCP Leasar"
 
-#: htdocs/plugins/router/pages/status.dsl.html:3
+#: htdocs/plugins/router/pages/status.status.dsl.html:9
+msgid "DSL Connection"
+msgstr "DSL uppkoppling"
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:13
+msgid "DSL Mode"
+msgstr "DSL Mode"
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:3
 msgid "DSL Status"
+msgstr "DSL Status"
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:17
+msgid "DSL Status Information"
 msgstr "DSL Status"
 
 #: htdocs/plugins/router/pages/status.diagnostics.html:10
@@ -308,7 +331,11 @@ msgstr "Visa tecken"
 msgid "Enabled"
 msgstr "Aktiv"
 
-#: htdocs/plugins/router/pages/status.overview.js:61
+#: htdocs/plugins/router/pages/status.status.dsl.html:32
+msgid "Error Counter"
+msgstr "Fel"
+
+#: htdocs/plugins/router/pages/status.status.js:61
 msgid "Ethernet Ports"
 msgstr "Ethernet portar"
 
@@ -332,7 +359,7 @@ msgstr "Fabriksinställningar"
 msgid "Firmware File:"
 msgstr "Mjukvarufil"
 
-#: htdocs/plugins/router/pages/status.overview.js:49
+#: htdocs/plugins/router/pages/status.status.js:49
 msgid "Firmware Version"
 msgstr "Firmware version"
 
@@ -352,13 +379,17 @@ msgstr "Gästrum"
 msgid "Home Main"
 msgstr "Home Main"
 
-#: htdocs/plugins/router/pages/status.overview.js:22
-#: htdocs/plugins/router/pages/status.overview.js:47
+#: htdocs/plugins/core/widgets/luci.login.html:14
+msgid "Host"
+msgstr "Namn"
+
+#: htdocs/plugins/router/pages/status.status.js:22
+#: htdocs/plugins/router/pages/status.status.js:47
 msgid "Hostname"
 msgstr "Datornamn"
 
-#: htdocs/plugins/router/pages/status.overview.js:22
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:22
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "IPv4-Address"
 msgstr "IPv4-Adress"
 
@@ -376,11 +407,11 @@ msgstr ""
 msgid "Install Upgrade"
 msgstr "Installera uppgradering"
 
-#: htdocs/plugins/router/pages/status.overview.js:50
+#: htdocs/plugins/router/pages/status.status.js:50
 msgid "Kernel Version"
 msgstr "Kärnans version"
 
-#: htdocs/plugins/router/pages/status.overview.js:22
+#: htdocs/plugins/router/pages/status.status.js:22
 msgid "Leasetime remaining"
 msgstr "Återstående lease-tid"
 
@@ -388,7 +419,7 @@ msgstr "Återstående lease-tid"
 msgid "Load"
 msgstr "Ladda upp"
 
-#: htdocs/plugins/router/pages/status.overview.js:53
+#: htdocs/plugins/router/pages/status.status.js:53
 msgid "Load Average"
 msgstr "Genomsnittsbelastning"
 
@@ -400,7 +431,7 @@ msgstr "Laddar"
 msgid "Local IP"
 msgstr "Lokalt IP"
 
-#: htdocs/plugins/router/pages/status.overview.js:51
+#: htdocs/plugins/router/pages/status.status.js:51
 msgid "Local Time"
 msgstr "Lokal tid"
 
@@ -417,11 +448,11 @@ msgstr "Logga ut"
 msgid "Login Account"
 msgstr "Login konto"
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "MAC address"
 msgstr "MAC-Adress"
 
-#: htdocs/plugins/router/pages/status.overview.js:22
+#: htdocs/plugins/router/pages/status.status.js:22
 msgid "MAC-Address"
 msgstr "MAC-Adress"
 
@@ -429,24 +460,24 @@ msgstr "MAC-Adress"
 msgid "Manual Firmware Upgrade"
 msgstr "Manuell uppgradering"
 
-#: htdocs/plugins/router/pages/status.overview.html:8
+#: htdocs/plugins/router/pages/status.status.html:8
 msgid "Memory"
 msgstr "Minne"
 
-#: htdocs/plugins/router/pages/status.overview.js:48
+#: htdocs/plugins/router/pages/status.status.js:48
 msgid "Model"
 msgstr "Modell"
 
-#: htdocs/plugins/router/pages/status.overview.js:24
-#: htdocs/plugins/router/pages/status.overview.js:88
+#: htdocs/plugins/router/pages/status.status.js:24
+#: htdocs/plugins/router/pages/status.status.js:88
 msgid "No active leases"
 msgstr "Inga aktiva leasar"
 
-#: htdocs/plugins/router/pages/status.overview.js:101
+#: htdocs/plugins/router/pages/status.status.js:101
 msgid "No active stations"
 msgstr "Inga aktiva klienter"
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "Noise"
 msgstr "Brus"
 
@@ -458,7 +489,11 @@ msgstr "Office"
 msgid "Online Update"
 msgstr "Online-uppgradering"
 
-#: htdocs/plugins/core/widgets/luci.login.html:18
+#: htdocs/plugins/router/pages/status.status.dsl.html:27
+msgid "Operating Data"
+msgstr "Operationsdata"
+
+#: htdocs/plugins/core/widgets/luci.login.html:22
 #: htdocs/plugins/router/pages/settings.password.html:10
 msgid "Password"
 msgstr "Lösenord"
@@ -471,7 +506,7 @@ msgstr "Ping"
 msgid "Ping Test"
 msgstr "Ping Test"
 
-#: htdocs/plugins/core/widgets/luci.login.js:52
+#: htdocs/plugins/core/widgets/luci.login.js:80
 msgid "Please enter correct username and password!"
 msgstr "Knappa in rätt användarnamn och lösenord! "
 
@@ -507,7 +542,7 @@ msgstr "Protokol"
 msgid "Public Port"
 msgstr "Publikt port"
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "RX Rate"
 msgstr "RX"
 
@@ -523,7 +558,7 @@ msgstr "Reset återställer fabriksinställningarna på din gateway"
 msgid "Restore settings from a configuration saved on a computer"
 msgstr "Återställ konfigurationsinställnignar från fil på din dator"
 
-#: htdocs/plugins/router/pages/status.overview.js:70
+#: htdocs/plugins/router/pages/status.status.js:70
 msgid "Root Usage (/)"
 msgstr "Root disk (/)"
 
@@ -540,7 +575,7 @@ msgstr "Spara konfigurationen till fil"
 msgid "Schedule Function"
 msgstr "Schemaläggningsfunktion"
 
-#: htdocs/plugins/router/pages/status.overview.js:65
+#: htdocs/plugins/router/pages/status.status.js:65
 msgid "Shared"
 msgstr "Delad"
 
@@ -548,11 +583,11 @@ msgstr "Delad"
 msgid "Show calls for"
 msgstr "Visa samtal för"
 
-#: htdocs/plugins/core/widgets/luci.login.html:26
+#: htdocs/plugins/core/widgets/luci.login.html:30
 msgid "Sign in"
 msgstr "Logga in"
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "Signal"
 msgstr "Signal"
 
@@ -560,19 +595,19 @@ msgstr "Signal"
 msgid "Status-LED"
 msgstr "Status-LED"
 
-#: htdocs/plugins/router/pages/status.overview.html:11
+#: htdocs/plugins/router/pages/status.status.html:11
 msgid "Storage"
 msgstr "Utrymme"
 
-#: htdocs/plugins/router/pages/status.overview.js:67
+#: htdocs/plugins/router/pages/status.status.js:67
 msgid "Swap"
 msgstr "Swap"
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "TX Rate"
 msgstr "TX"
 
-#: htdocs/plugins/router/pages/status.overview.js:71
+#: htdocs/plugins/router/pages/status.status.js:71
 msgid "Temporary Usage (/tmp)"
 msgstr "Temporärt utrymme (/tmp)"
 
@@ -596,27 +631,27 @@ msgstr "USB Port"
 msgid "Upload file"
 msgstr "Ladda upp fil"
 
-#: htdocs/plugins/router/pages/status.overview.js:52
+#: htdocs/plugins/router/pages/status.status.js:52
 msgid "Uptime"
 msgstr "Upptid"
 
-#: htdocs/plugins/router/pages/status.overview.js:64
+#: htdocs/plugins/router/pages/status.status.js:64
 msgid "Usage"
 msgstr "Användning"
 
-#: htdocs/plugins/core/widgets/luci.login.html:14
+#: htdocs/plugins/core/widgets/luci.login.html:18
 msgid "Username"
 msgstr "Användarnamn"
 
-#: htdocs/plugins/router/pages/status.overview.js:58
+#: htdocs/plugins/router/pages/status.status.js:58
 msgid "VDSL"
 msgstr "VDSL"
 
-#: htdocs/plugins/router/pages/status.overview.js:60
+#: htdocs/plugins/router/pages/status.status.js:60
 msgid "Voice Ports"
 msgstr "Voice portar"
 
-#: htdocs/plugins/router/pages/status.overview.js:56
+#: htdocs/plugins/router/pages/status.status.js:56
 msgid "Wifi"
 msgstr "WiFi"
 
@@ -624,10 +659,10 @@ msgstr "WiFi"
 msgid "You are logged in!"
 msgstr "Du är inloggad!"
 
-#: htdocs/plugins/router/pages/status.overview.js:56
-#: htdocs/plugins/router/pages/status.overview.js:57
-#: htdocs/plugins/router/pages/status.overview.js:58
-#: htdocs/plugins/router/pages/status.overview.js:59
+#: htdocs/plugins/router/pages/status.status.js:56
+#: htdocs/plugins/router/pages/status.status.js:57
+#: htdocs/plugins/router/pages/status.status.js:58
+#: htdocs/plugins/router/pages/status.status.js:59
 msgid "no"
 msgstr "Nej"
 
@@ -710,6 +745,10 @@ msgstr ""
 "Välj anslutningstypen och platsen där du vill spara spårning. Spårning "
 "kommer då att börja automatiskt i en separat popup-fönster."
 
+#: htdocs/plugins/router/pages/status.status.dsl.html:5
+msgid "status.dsl.offline"
+msgstr "DSL är offline"
+
 #: htdocs/plugins/core/widgets/uci.wireless.interface.html:10
 msgid "wifi-iface.closed"
 msgstr "Öppet nätverk"
@@ -735,15 +774,124 @@ msgstr "WiFi Namn (SSID)"
 msgid "wifi.settings.info"
 msgstr "Här kan du ställa in generella inställningar för wifi kort"
 
-#: htdocs/plugins/router/pages/status.overview.js:56
-#: htdocs/plugins/router/pages/status.overview.js:57
-#: htdocs/plugins/router/pages/status.overview.js:58
-#: htdocs/plugins/router/pages/status.overview.js:59
+#: htdocs/plugins/router/pages/status.status.js:56
+#: htdocs/plugins/router/pages/status.status.js:57
+#: htdocs/plugins/router/pages/status.status.js:58
+#: htdocs/plugins/router/pages/status.status.js:59
 msgid "yes"
 msgstr "Ja"
 
+msgid "internet.title"
+msgstr "Internet"
+
+msgid "internet.firewall.title"
+msgstr "Brandvägg"
+
+msgid "internet.port_mapping.title"
+msgstr "NAT Mappning"
+
+msgid "internet.exposed_host.title"
+msgstr "Exponerad klient"
+
+msgid "internet.dns.title"
+msgstr "DNS"
+
+msgid "overview.title"
+msgstr "Översikt"
+
+# share/menu.d/phone.json
+msgid "phone.title"
+msgstr "Telefoni"
+
+msgid "phone.call_log.title"
+msgstr "Samtalslogg"
+
+msgid "phone.number_blocking.title"
+msgstr "Nummerblockering"
+
+msgid "phone.ringing_schedule.title"
+msgstr "Ringschema"
+
+msgid "phone.numbers.title"
+msgstr "Telefonnummer"
+
+msgid "phone.speed_dialing.title"
+msgstr "Snabbuppringning"
+
+msgid "settings.title"
+msgstr "Inställningar"
+
+msgid "settings.password.title"
+msgstr "Lösenord"
+
+msgid "settings.upgrade.title"
+msgstr "Uppgradera"
+
+msgid "settings.energy.title"
+msgstr "Energiförbrukning"
+
+msgid "settings.configuration.title"
+msgstr "Konfiguration"
+
+msgid "settings.network.title"
+msgstr "Nätverk"
+
+msgid "settings.uci.title"
+msgstr "UCI"
+
+# share/menu.d/status.json
+msgid "status.title"
+msgstr "Status"
+
+msgid "status.status.title"
+msgstr "Status"
+
+msgid "status.status.dsl.title"
+msgstr "DSL"
+
+msgid "status.diagnostics.title"
+msgstr "Diagnostik"
+
+msgid "status.events.title"
+msgstr "Händelser"
+
+msgid "status.restart.title"
+msgstr "Starta om"
+
+msgid "status.about.title"
+msgstr "Om"
+
+msgid "status.nat.title"
+msgstr "NAT"
+
+# share/menu.d/status.vodaphone.json
+msgid "status.status.voice.title"
+msgstr "Telefoni"
+
+msgid "status.status.tv.title"
+msgstr "TV"
+
+# share/menu.d/wifi.json
+msgid "wifi.title"
+msgstr "WiFi"
+
+msgid "wifi.general.title"
+msgstr "Wifi Inställningar"
+
+msgid "wifi.schedule.title"
+msgstr "Wifi Schemaläggning"
+
+msgid "wifi.wps.title"
+msgstr "Wifi WPS"
+
+msgid "wifi.mac_filter.title"
+msgstr "Wifi MAC-filter"
+
+msgid "wifi.settings.title"
+msgstr "Wifi Inställningar"
+
 msgid "wifi-iface.wifi-iface.ssid"
-msgstr ""
+msgstr "SSID"
 
 msgid "wifi-iface.network"
 msgstr "Nätverk"
@@ -776,7 +924,7 @@ msgid "wifi-iface.disabled"
 msgstr ""
 
 msgid "wifi-iface.macmode"
-msgstr ""
+msgstr "Filtreringstyp"
 
 msgid "wifi-iface.macfilter"
 msgstr "MAC Filter"
@@ -793,9 +941,6 @@ msgstr "Neka"
 #~ msgid "Actual Data Rate"
 #~ msgstr "Nuvarande hastighet"
 
-#~ msgid "Bit Rate"
-#~ msgstr "Bithastighet"
-
 #~ msgid "CRC Errors"
 #~ msgstr "CRC fel"
 
@@ -808,20 +953,8 @@ msgstr "Neka"
 #~ msgid "Current"
 #~ msgstr "Nuvarande"
 
-#~ msgid "DSL Connection"
-#~ msgstr "DSL uppkoppling"
-
-#~ msgid "DSL Mode"
-#~ msgstr "DSL Mode"
-
-#~ msgid "DSL Status Information"
-#~ msgstr "DSL Status"
-
 #~ msgid "Downstream"
 #~ msgstr "Ner"
-
-#~ msgid "Error Counter"
-#~ msgstr "Fel"
 
 #~ msgid "FEC Corrections"
 #~ msgstr "FEC rättelser"
@@ -841,17 +974,11 @@ msgstr "Neka"
 #~ msgid "Loop Attenuation"
 #~ msgstr "Loop attenuation"
 
-#~ msgid "Operating Data"
-#~ msgstr "Operationsdata"
-
 #~ msgid "Received Cells"
 #~ msgstr "Mottagna cells"
 
 #~ msgid "SNR Margin"
 #~ msgstr "SNR tolerans"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistik"
 
 #~ msgid "Test"
 #~ msgstr "Jag testar"

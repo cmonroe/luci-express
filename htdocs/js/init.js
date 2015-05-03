@@ -1,5 +1,7 @@
 angular.module("luci")
-.controller("InitPageController", function($scope, $tr, $state, $stateParams, $config, $session, $localStorage, $rpc, $navigation, $location, $rootScope, $http, $theme){
+.controller("InitPageController", function($scope, $tr, 
+	$state, $stateParams, $config, $session, $localStorage, 
+	$rpc, $navigation, $location, $rootScope, $http, gettext, $theme){
 	//$scope.progress = {}; 
 	console.log("INIT"); 
 	function progress(text, value){
@@ -111,6 +113,7 @@ angular.module("luci")
 											}
 									},
 									onEnter: function($window){
+										document.title = $tr(k+".title")+" - "+$tr(gettext("application.name")); 
 										// TODO: all these redirects seem to load page multiple times. 
 										//if(item.redirect) $window.location.href = "#!"+item.redirect; 
 									},

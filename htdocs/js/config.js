@@ -24,7 +24,7 @@ angular.module("luci")
 .factory('$config', function($rootScope){
 	return {
 		mode: "basic", // basic or expert supported
-		model: "Inteno DG301",
+		//model: "Inteno DG301",
 		languages: {
 			"tr": {
 				title: "Turkish"

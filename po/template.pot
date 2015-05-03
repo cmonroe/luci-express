@@ -8,7 +8,7 @@ msgstr ""
 msgid "<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span> Warning: By using the exposed host function you bypass the firewall of your {{config.friendly_name}}. Please make sure that your computer is protected against attacks from Internet. The following ports will not be forwarded: {{ nonforwardedPorts || 'None'}}."
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:57
+#: htdocs/plugins/router/pages/status.status.js:57
 msgid "ADSL"
 msgstr ""
 
@@ -16,11 +16,11 @@ msgstr ""
 msgid "Access for listed devices"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:74
+#: htdocs/plugins/router/pages/status.status.js:74
 msgid "Active Connections"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.html:20
+#: htdocs/plugins/router/pages/status.status.html:20
 msgid "Active Stations"
 msgstr ""
 
@@ -52,12 +52,20 @@ msgstr ""
 msgid "Basic Mode"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:66
+#: htdocs/plugins/router/pages/status.status.dsl.html:22
+msgid "Bit Rate"
+msgstr ""
+
+#: htdocs/plugins/router/pages/status.status.js:66
 msgid "Buffered"
 msgstr ""
 
 #: htdocs/plugins/core/widgets/uci.wireless.interface.macfilter.edit.html:46
 msgid "Cancel"
+msgstr ""
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:37
+msgid "Cell Statistics"
 msgstr ""
 
 #: htdocs/plugins/router/pages/settings.password.html:18
@@ -100,7 +108,7 @@ msgstr ""
 msgid "Connection Type"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.html:14
+#: htdocs/plugins/router/pages/status.status.html:14
 msgid "Connections"
 msgstr ""
 
@@ -116,12 +124,24 @@ msgstr ""
 msgid "Currently added devices"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.html:17
+#: htdocs/plugins/router/pages/status.status.html:17
 msgid "DHCP Leases"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.dsl.html:3
+#: htdocs/plugins/router/pages/status.status.dsl.html:9
+msgid "DSL Connection"
+msgstr ""
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:13
+msgid "DSL Mode"
+msgstr ""
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:3
 msgid "DSL Status"
+msgstr ""
+
+#: htdocs/plugins/router/pages/status.status.dsl.html:17
+msgid "DSL Status Information"
 msgstr ""
 
 #: htdocs/plugins/router/pages/status.diagnostics.html:10
@@ -149,7 +169,11 @@ msgstr ""
 msgid "Energy Settings"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:61
+#: htdocs/plugins/router/pages/status.status.dsl.html:32
+msgid "Error Counter"
+msgstr ""
+
+#: htdocs/plugins/router/pages/status.status.js:61
 msgid "Ethernet Ports"
 msgstr ""
 
@@ -177,7 +201,7 @@ msgstr ""
 msgid "Firmware Upgrade"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:49
+#: htdocs/plugins/router/pages/status.status.js:49
 msgid "Firmware Version"
 msgstr ""
 
@@ -197,13 +221,17 @@ msgstr ""
 msgid "Home Main"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:22
-#: htdocs/plugins/router/pages/status.overview.js:47
+#: htdocs/plugins/core/widgets/luci.login.html:14
+msgid "Host"
+msgstr ""
+
+#: htdocs/plugins/router/pages/status.status.js:22
+#: htdocs/plugins/router/pages/status.status.js:47
 msgid "Hostname"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:22
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:22
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "IPv4-Address"
 msgstr ""
 
@@ -215,11 +243,11 @@ msgstr ""
 msgid "Install Upgrade"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:50
+#: htdocs/plugins/router/pages/status.status.js:50
 msgid "Kernel Version"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:22
+#: htdocs/plugins/router/pages/status.status.js:22
 msgid "Leasetime remaining"
 msgstr ""
 
@@ -227,7 +255,7 @@ msgstr ""
 msgid "Load"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:53
+#: htdocs/plugins/router/pages/status.status.js:53
 msgid "Load Average"
 msgstr ""
 
@@ -239,7 +267,7 @@ msgstr ""
 msgid "Local IP"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:51
+#: htdocs/plugins/router/pages/status.status.js:51
 msgid "Local Time"
 msgstr ""
 
@@ -264,11 +292,11 @@ msgstr ""
 msgid "MAC Filtering"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "MAC address"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:22
+#: htdocs/plugins/router/pages/status.status.js:22
 msgid "MAC-Address"
 msgstr ""
 
@@ -276,24 +304,24 @@ msgstr ""
 msgid "Manual Firmware Upgrade"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.html:8
+#: htdocs/plugins/router/pages/status.status.html:8
 msgid "Memory"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:48
+#: htdocs/plugins/router/pages/status.status.js:48
 msgid "Model"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:24
-#: htdocs/plugins/router/pages/status.overview.js:88
+#: htdocs/plugins/router/pages/status.status.js:24
+#: htdocs/plugins/router/pages/status.status.js:88
 msgid "No active leases"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:101
+#: htdocs/plugins/router/pages/status.status.js:101
 msgid "No active stations"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "Noise"
 msgstr ""
 
@@ -309,7 +337,11 @@ msgstr ""
 msgid "Online Update"
 msgstr ""
 
-#: htdocs/plugins/core/widgets/luci.login.html:18
+#: htdocs/plugins/router/pages/status.status.dsl.html:27
+msgid "Operating Data"
+msgstr ""
+
+#: htdocs/plugins/core/widgets/luci.login.html:22
 #: htdocs/plugins/router/pages/settings.password.html:10
 msgid "Password"
 msgstr ""
@@ -322,7 +354,7 @@ msgstr ""
 msgid "Ping Test"
 msgstr ""
 
-#: htdocs/plugins/core/widgets/luci.login.js:52
+#: htdocs/plugins/core/widgets/luci.login.js:80
 msgid "Please enter correct username and password!"
 msgstr ""
 
@@ -354,7 +386,7 @@ msgstr ""
 msgid "Public Port"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "RX Rate"
 msgstr ""
 
@@ -375,7 +407,7 @@ msgstr ""
 msgid "Ringing Schedule"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:70
+#: htdocs/plugins/router/pages/status.status.js:70
 msgid "Root Usage (/)"
 msgstr ""
 
@@ -404,7 +436,7 @@ msgstr ""
 msgid "Setup"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:65
+#: htdocs/plugins/router/pages/status.status.js:65
 msgid "Shared"
 msgstr ""
 
@@ -412,11 +444,11 @@ msgstr ""
 msgid "Show calls for"
 msgstr ""
 
-#: htdocs/plugins/core/widgets/luci.login.html:26
+#: htdocs/plugins/core/widgets/luci.login.html:30
 msgid "Sign in"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "Signal"
 msgstr ""
 
@@ -424,23 +456,23 @@ msgstr ""
 msgid "Status-LED"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.html:11
+#: htdocs/plugins/router/pages/status.status.html:11
 msgid "Storage"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:67
+#: htdocs/plugins/router/pages/status.status.js:67
 msgid "Swap"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.html:5
+#: htdocs/plugins/router/pages/status.status.html:5
 msgid "System"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:28
+#: htdocs/plugins/router/pages/status.status.js:28
 msgid "TX Rate"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:71
+#: htdocs/plugins/router/pages/status.status.js:71
 msgid "Temporary Usage (/tmp)"
 msgstr ""
 
@@ -468,27 +500,27 @@ msgstr ""
 msgid "Upload file"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:52
+#: htdocs/plugins/router/pages/status.status.js:52
 msgid "Uptime"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:64
+#: htdocs/plugins/router/pages/status.status.js:64
 msgid "Usage"
 msgstr ""
 
-#: htdocs/plugins/core/widgets/luci.login.html:14
+#: htdocs/plugins/core/widgets/luci.login.html:18
 msgid "Username"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:58
+#: htdocs/plugins/router/pages/status.status.js:58
 msgid "VDSL"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:59
+#: htdocs/plugins/router/pages/status.status.js:59
 msgid "Voice"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:60
+#: htdocs/plugins/router/pages/status.status.js:60
 msgid "Voice Ports"
 msgstr ""
 
@@ -500,7 +532,7 @@ msgstr ""
 msgid "WPS Function"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:56
+#: htdocs/plugins/router/pages/status.status.js:56
 msgid "Wifi"
 msgstr ""
 
@@ -516,10 +548,10 @@ msgstr ""
 msgid "You are logged in!"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:56
-#: htdocs/plugins/router/pages/status.overview.js:57
-#: htdocs/plugins/router/pages/status.overview.js:58
-#: htdocs/plugins/router/pages/status.overview.js:59
+#: htdocs/plugins/router/pages/status.status.js:56
+#: htdocs/plugins/router/pages/status.status.js:57
+#: htdocs/plugins/router/pages/status.status.js:58
+#: htdocs/plugins/router/pages/status.status.js:59
 msgid "no"
 msgstr ""
 
@@ -575,6 +607,10 @@ msgstr ""
 msgid "status.diagnostics.trace.info"
 msgstr ""
 
+#: htdocs/plugins/router/pages/status.status.dsl.html:5
+msgid "status.dsl.offline"
+msgstr ""
+
 #: htdocs/plugins/core/widgets/uci.wireless.interface.html:10
 msgid "wifi-iface.closed"
 msgstr ""
@@ -616,9 +652,9 @@ msgstr ""
 msgid "wifi.wps.info"
 msgstr ""
 
-#: htdocs/plugins/router/pages/status.overview.js:56
-#: htdocs/plugins/router/pages/status.overview.js:57
-#: htdocs/plugins/router/pages/status.overview.js:58
-#: htdocs/plugins/router/pages/status.overview.js:59
+#: htdocs/plugins/router/pages/status.status.js:56
+#: htdocs/plugins/router/pages/status.status.js:57
+#: htdocs/plugins/router/pages/status.status.js:58
+#: htdocs/plugins/router/pages/status.status.js:59
 msgid "yes"
 msgstr ""
