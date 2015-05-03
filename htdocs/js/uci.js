@@ -9,6 +9,16 @@ angular.module("luci")
 			"power_led": 		{ dvalue: true, type: Boolean }, 
 			"power_led_br":	{ dvalue: 100, type: Number }
 		}, 
+		"firewall-defaults": {
+			"syn_flood":		{ dvalue: true, type: Boolean }, 
+			"intput":				{ dvalue: "ACCEPT", type: String }, 
+			"output":				{ dvalue: "ACCEPT", type: String }, 
+			"forward":			{ dvalue: "REJECT", type: String }, 
+		}, 
+		"firewall-settings": {
+			"disabled":			{ dvalue: false, type: Boolean }, 
+			"ping_wan":			{ dvalue: false, type: Boolean }
+		}, 
 		"wifi-settings": {
 			"disabled":			{ dvalue: false, type: Boolean }, 
 			"button_enabled": { dvalue: false, type: Boolean }, 
@@ -95,14 +105,19 @@ angular.module("luci")
 	})(); 
 	(function(){
 		
-		function UCISection(){
-			
+		function UCISection(config){
+			this[".config"] = config; 
 		}
 		
 		UCISection.prototype.$update = function(data){
 			if(!(".type" in data)) throw new Error("Supplied object does not have required '.type' field!"); 
-			var type = section_types[data[".type"]]; 
-			if(!type) throw new Error("Unrecognized type "+data[".type"]); 
+			// try either <config>-<type> or just <type>
+			var type = 	section_types[data[".type"]] || 
+									section_types[this[".config"][".name"]+"-"+data[".type"]]; 
+			if(!type) {
+				console.error("Section.$update: unrecognized section type "+this[".config"][".name"]+"-"+data[".type"]); 
+				return; 
+			}
 			var self = this; 
 			self[".original"] = data; 
 			self[".name"] = data[".name"]; 
@@ -137,6 +152,7 @@ angular.module("luci")
 		
 		UCISection.prototype.$getChangedValues = function(){
 			var type = this[".section_type"]; 
+			if(!type) return {}; 
 			var self = this; 
 			var changed = {}; 
 			Object.keys(type).map(function(k){
@@ -156,8 +172,8 @@ angular.module("luci")
 			this["@all"] = []; 
 		}
 		function _insertSection(self, item){
-			console.log("Inserting new section: "+item[".name"]); 
-			var section = new UCI.Section(); 
+			console.log("Loaded new section: "+item[".name"]); 
+			var section = new UCI.Section(self); 
 			section.$update(item); 
 			if(!("@"+item[".type"] in self)) self["@"+item[".type"]] = []; 
 			self["@"+item[".type"]].push(section); 
